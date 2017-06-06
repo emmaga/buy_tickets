@@ -1,17 +1,45 @@
 <template>
-  <div class="temp" v-show="isShow">
-    可退数量：{{ waitingCheck }}
-    <form @submit.prevent="refund">
-      <div class="form-group">
-        <!--退票数量-->
-        <label class="control-label" for="cancelCount">退票数量</label> 
-        <p :class="{ 'control': true }">
-          <input min="1" :max="waitingCheck" required v-validate="'required'" :class="{'form-control': true, 'has-error': errors.has('cancelCount') }" v-model="cancelCount" name="cancelCount" type="number" placeholder="请输入退票数量">
-        </p>
+  <div class="modal fade in" v-show="isShow">
+    <div class="modal-backdrop fade in"></div>
+    <div class="modal-dialog autoscroll" >
+      <div class="modal-content">
+        <!--header-->
+        <div class="modal-header">
+          <button type="button" class="close"  @click="close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <h5 class="modal-title" >游客</h5>
+        </div>
+        <!--body-->
+        <div class="modal-body">
+
+          <h3>可退数量：{{ waitingCheck }}</h3>
+          <hr>
+          <form @submit.prevent="refund">
+            <div class="form-group">
+              <!--退票数量-->
+              <label class="control-label" for="cancelCount">退票数量</label> 
+              <p :class="{ 'control': true }">
+                <input min="1" :max="waitingCheck" required v-validate="'required'" :class="{'form-control': true, 'has-error': errors.has('cancelCount') }" v-model="cancelCount" name="cancelCount" type="number" placeholder="请输入退票数量">
+              </p>
+            </div>
+          </form>
+
+
+
+        </div>
+        <!--footer-->
+        <div class="modal-footer">
+          <a class="btn btn-default btn-sm" @click="close">取消</a>
+          <button class="btn btn-sm btn-primary"  type="submit" :disabled="refunding">退票</button>
+        </div>       
+
       </div>
-      <button type="submit" :disabled="refunding">退票</button>
-      <a @click="close">取消</a>
-    </form>
+    </div>
+
+
+
+
   </div>
 </template>
 
@@ -68,16 +96,4 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.temp {
-  position: fixed;
-  z-index: 999;
-  top: 0px;
-  left: 0px;
-  width: 100%;
-  height: 100%;
-  background-color: white;
-}
-.has-error {
-  border: 1px solid red;
-}
 </style>

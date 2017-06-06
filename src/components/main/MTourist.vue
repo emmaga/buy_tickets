@@ -21,7 +21,6 @@
           </div>
         </div>
         <!--footer-->
-        <!--footer-->
         <div class="modal-footer">
           <a class="btn btn-default btn-sm" @click="close">取消</a>
         </div>
