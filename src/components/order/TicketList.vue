@@ -61,6 +61,18 @@ export default {
       },
       columns: ['GoodsName', 'SalePrice', 'VisitDateStart', 'VisitDateEnd', 'OTACode', 'GoodsID', 'SaleID', 'TwoDBarCodeOn', 'operate'],
       options: {
+        perPageValues: [],
+        texts: {
+          count:'第{from}至{to}条数据／共{count}条数据|共{count}条数据|共1条数据',
+            filter:'Filter Results:',
+            filterPlaceholder:'Search query',
+            limit:'Records:',
+            noResults:'查无结果',
+            page:'Page:', // for dropdown pagination 
+            filterBy: 'Filter by {column}', // Placeholder for search fields when filtering by column
+            loading:'Loading...', // First request to server
+            defaultOption:'Select {column}' // default option for list filters
+        },
         filterable: false,
         perPage: 2,
         templates: {

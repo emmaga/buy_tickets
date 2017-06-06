@@ -152,7 +152,31 @@ export default {
         locale: {
           format: 'YYYY-MM-DD',
           applyLabel: '确定',
-          cancelLabel: '清空'
+          cancelLabel: '清空',
+          "customRangeLabel": "Custom",
+          "daysOfWeek": [
+            "日",
+            "一",
+            "二",
+            "三",
+            "四",
+            "五",
+            "六"
+          ],
+          "monthNames": [
+            "一月",
+            "二月",
+            "三月",
+            "四月",
+            "五月",
+            "六月",
+            "七月",
+            "八月",
+            "九月",
+            "十月",
+            "十一月",
+            "十二月"
+          ]
         },
         startDate: moment(initStartCreateTime).format('YYYY-MM-DD'),
         endDate: moment(initEndCreateTime).format('YYYY-MM-DD')
@@ -174,7 +198,31 @@ export default {
         locale: {
           format: 'YYYY-MM-DD',
           applyLabel: '确定',
-          cancelLabel: '清空'
+          cancelLabel: '清空',
+          "customRangeLabel": "Custom",
+          "daysOfWeek": [
+            "日",
+            "一",
+            "二",
+            "三",
+            "四",
+            "五",
+            "六"
+          ],
+          "monthNames": [
+            "一月",
+            "二月",
+            "三月",
+            "四月",
+            "五月",
+            "六月",
+            "七月",
+            "八月",
+            "九月",
+            "十月",
+            "十一月",
+            "十二月"
+          ]
         }
       },
       function (start, end, label) {
@@ -197,7 +245,31 @@ export default {
         locale: {
           format: 'YYYY-MM-DD',
           applyLabel: '确定',
-          cancelLabel: '清空'
+          cancelLabel: '清空',
+          "customRangeLabel": "Custom",
+          "daysOfWeek": [
+            "日",
+            "一",
+            "二",
+            "三",
+            "四",
+            "五",
+            "六"
+          ],
+          "monthNames": [
+            "一月",
+            "二月",
+            "三月",
+            "四月",
+            "五月",
+            "六月",
+            "七月",
+            "八月",
+            "九月",
+            "十月",
+            "十一月",
+            "十二月"
+          ]
         }
       },
       function (start, end, label) {
@@ -238,12 +310,24 @@ export default {
       bookerID: '',
       columns: ['orderId', 'parterOrderId', 'userOrderId', 'partnerName', 'goodsName', 'price', 'bookPerson', 'bookMobile', 'bookerIDTypeText', 'bookerID', 'orderCreateTime', 'visitDateStart', 'visitDateEnd', 'totalTickets', 'checkedTickets', 'returnedTickets', 'isExpired', 'checkStatusText', 'touristBtn', 'refundBtn'],
       options: {
+        perPageValues: [],
+        texts: {
+          count:'第{from}至{to}条数据／共{count}条数据|共{count}条数据|共1条数据',
+            filter:'Filter Results:',
+            filterPlaceholder:'Search query',
+            limit:'Records:',
+            noResults:'查无结果',
+            page:'Page:', // for dropdown pagination 
+            filterBy: 'Filter by {column}', // Placeholder for search fields when filtering by column
+            loading:'Loading...', // First request to server
+            defaultOption:'Select {column}' // default option for list filters
+        },
         sortIcon: {
           up:'',
           down:''
         },
         filterable: false,
-        perPage: 2,
+        perPage: 15,
         templates: {
           touristBtn: 'odl-tourist',
           refundBtn: 'odl-refund'
