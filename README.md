@@ -8,6 +8,9 @@
 # install dependencies
 npm install
 
+# vue-tables-2 修改
+将 src/assets/vue-tables-2/compiled 替换 node_modules／vue-tables-2/compiled
+
 # serve with hot reload at localhost:8080
 npm run dev
 
