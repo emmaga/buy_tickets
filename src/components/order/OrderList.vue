@@ -1,54 +1,101 @@
 <template>
-  <div class="hello">
-    <!--检票状态-->
-    <select v-model="checkStatus">
-      <option value="all">全部检票状态</option>
-      <option value="checked">已检票</option>
-      <option value="checking">检票中</option>
-      <option value="waiting">待检票</option>
-    </select>
-    <!--是否过期-->
-    <select v-model="isExpired">
-      <option value="all">已过期及未过期</option>
-      <option value="yes">已过期</option>
-      <option value="no">未过期</option>
-    </select>
-    <!--成交时间范围-->
-    成交时间范围 <input id="orderCreateDateRange" type="text" name="daterange" />
-    <!--游玩时间范围-->
-    游玩时间范围 <input id="visitDateRange" type="text" name="daterange" />
-    <!--检票时间范围-->
-    检票时间范围 <input id="checkDateRange" type="text" name="daterange" />
-    <!--预订人姓名-->
-    <input v-model="bookPerson" placeholder="预订人姓名">
-    <!--预订人手机号-->
-    <input v-model="bookMobile" placeholder="预订人手机号">
-    <!--辅助码-->
-    <input v-model="orderTicketCode" placeholder="辅助码">
-    <!--分销商订单号-->
-    <input v-model="parterOrderId" placeholder="分销商订单号">
-    <!--景区订单号-->
-    <input v-model="orderId" placeholder="景区订单号">
-    <!--商品名-->
-    <input v-model="goodsName" placeholder="商品名">
-    <!--证件类型-->
-    <select v-model="bookerIDType">
-      <option value="ID_CARD">身份证</option>
-      <option value="ERTONG">儿童无证件</option>
-      <option value="GANGAO">港澳通行证</option>
-      <option value="HUZHAO">护照</option>
-      <option value="SHIBING">士兵证</option>
-      <option value="JUNGUAN">军官证</option>
-      <option value="HUKOUBO">户口薄</option>
-      <option value="CHUSHENGZHENGMING">出生证明</option>
-      <option value="TAIBAO">台湾通行证</option>
-      <option value="TAIBAOZHENG">台胞证</option>
-      <option value="OTHER">其他</option>
-    </select>
-    <!--证件号-->
-    <input v-model="bookerID" placeholder="证件号">
+  <div class="col-sm-9 col-right page">
+    <a>
+      <strong>
+        <i class="glyphicon glyphicon-barcode"></i>
+        订单中心
+        <i class="glyphicon glyphicon-chevron-right"></i>
+        订单列表         
+      </strong>
+    </a>
+    <hr>
+
+    <div class="row">
+      <!--检票状态-->
+      <div class="controls btn-group col-sm-6 col-condensed">
+        <label>检票状态</label>
+        <select v-model="checkStatus" class="form-control">
+          <option value="all">全部检票状态</option>
+          <option value="checked">已检票</option>
+          <option value="checking">检票中</option>
+          <option value="waiting">待检票</option>
+        </select>
+      </div>
+      <!--是否过期-->
+      <div class="controls btn-group col-sm-6 col-condensed">
+        <label>检票状态</label>
+        <select v-model="isExpired" class="form-control">
+          <option value="all">已过期及未过期</option>
+          <option value="yes">已过期</option>
+          <option value="no">未过期</option>
+        </select>
+      </div>
+    </div>
+    <hr class="break-space">
+    <div class="row">
+      <!--成交时间范围-->
+      <div class="col-sm-4 col-condensed">
+        <label>成交时间范围</label>
+        <input id="orderCreateDateRange" type="text" name="daterange" class="form-control overflow-ellipsis" />
+      </div>
+      <!--游玩时间范围-->
+      <div class="col-sm-4 col-condensed">
+        <label>游玩时间范围</label>
+        <input id="visitDateRange" type="text" name="daterange" class="form-control overflow-ellipsis" />
+      </div>
+      <!--检票时间范围-->
+      <div class="col-sm-4 col-condensed">
+        <label>检票时间范围</label>
+        <input id="checkDateRange" type="text" name="daterange" class="form-control overflow-ellipsis" />
+      </div>
+    </div>
+
+    <hr class="break-space">
+
+    <div class="input-group flex-box multi-input">
+      <!--预订人姓名-->
+      <input class="flex-item form-control" v-model="bookPerson" placeholder="预订人姓名">
+      <!--预订人手机号-->
+      <input class="flex-item form-control" v-model="bookMobile" placeholder="预订人手机号">
+      <!--辅助码-->
+      <input class="flex-item form-control" v-model="orderTicketCode" placeholder="辅助码">
+      <!--分销商订单号-->
+      <input class="flex-item form-control" v-model="parterOrderId" placeholder="分销商订单号">
+      <!--景区订单号-->
+      <input class="flex-item form-control" v-model="orderId" placeholder="景区订单号">
+      <!--商品名-->
+      <input class="flex-item form-control" v-model="goodsName" placeholder="商品名">
+      <!--证件类型-->
+      <select class="flex-item form-control" v-model="bookerIDType" style="border-right:none">
+        <option value="ID_CARD">身份证</option>
+        <option value="ERTONG">儿童无证件</option>
+        <option value="GANGAO">港澳通行证</option>
+        <option value="HUZHAO">护照</option>
+        <option value="SHIBING">士兵证</option>
+        <option value="JUNGUAN">军官证</option>
+        <option value="HUKOUBO">户口薄</option>
+        <option value="CHUSHENGZHENGMING">出生证明</option>
+        <option value="TAIBAO">台湾通行证</option>
+        <option value="TAIBAOZHENG">台胞证</option>
+        <option value="OTHER">其他</option>
+      </select>
+      <!--证件号-->
+      <input class="flex-item form-control" v-model="bookerID" placeholder="证件号">
+    </div>
+    <hr class="break-space">
+
     <!--搜索按钮-->
-    <a @click="this.search">search</a>
+    <div class="controls pull-right">
+      <a class="btn btn-primary" @click="this.search">
+        <i class="glyphicon glyphicon-search"></i> 搜索
+      </a>
+    </div>
+
+    <hr class="break-space-double">
+    <hr class="break-space-double">
+    <hr class="break-space-double">
+
+    
     <!--订单列表-->
     <v-server-table ref="table" url="/otauser" :columns="columns" :options="options">
     </v-server-table>
@@ -287,21 +334,4 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h1, h2 {
-  font-weight: normal;
-}
-
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-
-a {
-  color: #42b983;
-}
 </style>
