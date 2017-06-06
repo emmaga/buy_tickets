@@ -3,7 +3,7 @@
   <div class="navbar navbar-inverse navbar-static-top">
     <div class="container-fluid">
       <div class="navbar-header">
-          <a class="navbar-brand">清云购票平台</a>
+          <a class="navbar-brand">清鹤购票平台</a>
       </div>
       <div class="navbar-collapse collapse">
         <ul class="nav navbar-nav navbar-right">

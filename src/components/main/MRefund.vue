@@ -62,6 +62,7 @@ export default {
   methods: {
     init () {
       this.isShow = true
+      this.cancelCount = ''
     },
     close () {
       this.isShow = false

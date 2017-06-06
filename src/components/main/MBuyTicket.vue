@@ -26,25 +26,19 @@
           </div>
           <hr>
 
-
-
-
-
             <div class="form-group">
               <!--订单基本信息-->
               <label class="control-label" >游玩日期</label>
               <input type="text" name="visitTime" class="form-control" />
             </div>
 
-
             <div class="form-group">
               <!--购票数量-->
               <label class="control-label" for="ticketCount">购票数量</label> 
               <p :class="{ 'control': true }">
-                <input min="1" required v-validate="'required'" :class="{'form-control': true, 'has-error': errors.has('ticketCount') }" v-model="ticketCount" name="ticketCount" type="number" placeholder="请输入购票数量">
+                <input min="1" max="50" required v-validate="'required'" :class="{'form-control': true, 'has-error': errors.has('ticketCount') }" v-model="ticketCount" name="ticketCount" type="number" placeholder="请输入购票数量">
               </p>
             </div>
-
 
             <div class="form-group">
               <!--联系人信息-->

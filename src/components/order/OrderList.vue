@@ -19,6 +19,7 @@
           <option value="checked">已检票</option>
           <option value="checking">检票中</option>
           <option value="waiting">待检票</option>
+          <option value="refund">已退票</option>
         </select>
       </div>
       <!--是否过期-->
@@ -125,19 +126,19 @@ Vue.component('odl-refund', {
     showRefund () {
       var rm = this.$parent.$parent.$parent.$refs.refund
       rm.orderId = this.data.orderId
-      rm.waitingCheck = this.data.totalTickets - this.data.checkedTickets
+      rm.waitingCheck = this.checkStatus === 'refund' ? 0 : (this.data.totalTickets - this.data.checkedTickets)
       rm.init()
     }
   },
   computed: {
     disabled () {
-      return (this.data.totalTickets - this.data.checkedTickets) === 0
+      return (this.data.totalTickets - this.data.checkedTickets) === 0 || this.data.checkStatus === 'refund'
     }
   },
   props: ['data']
 })
 let that
-let initStartCreateTime = new Date().getTime()
+let initStartCreateTime = new Date(moment(new Date()).format('YYYY-MM-DD')).getTime()
 let initEndCreateTime = new Date(new Date().getTime() + 30 * 24 * 60 * 60 * 1000).getTime()
 export default {
   name: 'order-list',
