@@ -163,7 +163,10 @@ tbody th{
   cursor: pointer;
 }
 
-
+.panel.scoreboard {
+  text-align: center;
+  font-weight: 700;
+}
 
 .pull-heigher1{
   top: -7px;

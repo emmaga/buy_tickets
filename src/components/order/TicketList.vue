@@ -1,12 +1,32 @@
 <template>
-  <div>
-    ticketlist
+  <div class="col-sm-9 col-right page">
+    <a>
+      <strong>
+        <i class="glyphicon glyphicon-barcode"></i>
+        订单中心
+        <i class="glyphicon glyphicon-chevron-right"></i>
+        手动下单
+      </strong>
+    </a>
+    <hr>
+
     <!--账户余额-->
-    <div v-if="account.prePayment">当前账户余额 {{ account.paymentAmount | fenToYuan }}</div>
+    <div class="row" v-if="account.prePayment">
+      <div class="col-xs-4">
+        <div class="panel panel-warning scoreboard">
+            <div class="panel-heading">当前账户余额</div>
+            <div class="panel-body">{{ account.paymentAmount | fenToYuan }}</div>
+        </div>
+      </div>
+    </div>
+
     <!--票列表-->
     <v-server-table url="/otauser" :columns="columns" :options="options">
     </v-server-table>
+
   </div>
+
+
 </template>
 
 <script>
