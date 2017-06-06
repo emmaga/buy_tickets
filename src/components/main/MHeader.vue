@@ -1,8 +1,26 @@
 <template>
   <header>
-    header
-    {{ userName }}
-    <a @click="exit">退出</a>
+    <div class="navbar navbar-inverse navbar-static-top">
+      <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand">清云购票平台</a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li>
+              <a> {{ userName }} </a>
+            </li>
+            <li>
+              <a @click="exit">
+                <i class="glyphicon glyphicon-lock"></i> 退出
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    
+
   </header>
 </template>
 
