@@ -1,10 +1,20 @@
 <template>
-  <nav>
-    订单中心
-    <router-link to="ticketList">手动下单</router-link>
-    <router-link to="orderList">订单查询</router-link>
+  <div class="col-sm-3 col-left">
+    <a class="font-bold no-underline cursor-default">
+      <i class="glyphicon glyphicon-barcode"></i> 订单中心
+      <i class="glyphicon glyphicon-chevron-down pull-right margin-right-15"></i>
+    </a>
+    <ul class="nav nav-stacked collapse in">
+      <hr>
+      <li class="nav-header">
+        <router-link to="ticketList">手动下单</router-link>
+      </li>
+      <li class="nav-header">
+        <router-link to="orderList">订单查询</router-link>
+      </li>
+    </ul>
     <!--<router-link to="statement">已导出报表</router-link>-->
-  </nav>
+  </div class="">
 </template>
 
 <script>
