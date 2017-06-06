@@ -11,11 +11,11 @@
           <h5 class="modal-title" >游客</h5>
         </div>
         <!--body-->
+          <form @submit.prevent="refund">
         <div class="modal-body">
 
           <h3>可退数量：{{ waitingCheck }}</h3>
           <hr>
-          <form @submit.prevent="refund">
             <div class="form-group">
               <!--退票数量-->
               <label class="control-label" for="cancelCount">退票数量</label> 
@@ -23,7 +23,6 @@
                 <input min="1" :max="waitingCheck" required v-validate="'required'" :class="{'form-control': true, 'has-error': errors.has('cancelCount') }" v-model="cancelCount" name="cancelCount" type="number" placeholder="请输入退票数量">
               </p>
             </div>
-          </form>
 
 
 
@@ -33,6 +32,7 @@
           <a class="btn btn-default btn-sm" @click="close">取消</a>
           <button class="btn btn-sm btn-primary"  type="submit" :disabled="refunding">退票</button>
         </div>       
+          </form>
 
       </div>
     </div>
