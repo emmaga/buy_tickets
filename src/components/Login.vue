@@ -55,7 +55,7 @@
                 <input required v-validate="'required'" :class="{'form-control': true, 'has-error': errors.has('projectName') }" v-model="projectName" name="projectName" type="text" placeholder="请输入项目code">
               </p>
               <!--登陆按钮-->
-              <hr class="break-space">
+              <hr class="break-space"> 
               <div class="control-group">
                 <button :disabled="logining" type="submit" class="btn btn-primary btn-block">登录</button>
               </div>
