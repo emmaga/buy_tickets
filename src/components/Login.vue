@@ -1,6 +1,6 @@
 <template>
   <!-- container -->
-  <div class="hello bg-gray full-screen">
+  <div class="bg-gray full-screen">
 
     <!-- header -->
     <div id="top-nav" class="navbar navbar-inverse navbar-static-top">
@@ -49,28 +49,16 @@
               <p :class="{ 'control': true }">
                 <input required v-validate="'required'" :class="{'form-control': true, 'has-error': errors.has('OTACode') }" v-model="OTACode" name="OTACode" type="text" placeholder="请输入分销商code">
               </p>
-              <!--项目code-->
-              <label class="control-label" for="projectName">项目code</label> 
-              <p :class="{ 'control': true }">
-                <input required v-validate="'required'" :class="{'form-control': true, 'has-error': errors.has('projectName') }" v-model="projectName" name="projectName" type="text" placeholder="请输入项目code">
-              </p>
               <!--登陆按钮-->
               <hr class="break-space"> 
               <div class="control-group">
                 <button :disabled="logining" type="submit" class="btn btn-primary btn-block">登录</button>
               </div>
             </form>
-
-          
           </div>
         </div>
       </div>
     </div>
-
-
-
-
-
 </div>
   </div>
 </template>
@@ -85,7 +73,6 @@ export default {
       account: '',
       password: '',
       OTACode: '',
-      projectName: '',
       logining: false
     }
   },
@@ -100,7 +87,7 @@ export default {
       this.logining = true
       this.axios.post('/loginOTA', {
         action: 'GetToken',
-        projectName: this.projectName,
+        projectName: 'xitangdev',
         OTACode: this.OTACode,
         account: this.account,
         // password: 'd0970714757783e6cf17b26fb8e2298f'
@@ -127,24 +114,6 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h1, h2 {
-  font-weight: normal;
-}
-
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-
-a {
-  color: #42b983;
-}
-
 .has-error {
   border: 1px solid red;
 }

@@ -5,3 +5,7 @@ export function getCardType (value) {
     return ''
   }
 }
+
+export function getFenToYuan (value) {
+  return new Number(value / 100).toFixed(2)
+}

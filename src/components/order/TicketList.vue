@@ -1,6 +1,9 @@
 <template>
   <div>
     ticketlist
+    <!--账户余额-->
+    <div v-if="account.prePayment">当前账户余额 {{ account.paymentAmount | fenToYuan }}</div>
+    <!--票列表-->
     <v-server-table url="/otauser" :columns="columns" :options="options">
     </v-server-table>
   </div>
@@ -9,6 +12,8 @@
 <script>
 import Vue from 'vue'
 import {ServerTable} from 'vue-tables-2'
+import {getParam} from '@/utils'
+import {getFenToYuan} from '@/utils/filters'
 Vue.use(ServerTable)
 Vue.component('odl-buy-ticket', {
   template: '<a class="fa fa-edit" href="javascript:void(0);" @click="showBuyTicket">下单</a>',
@@ -21,12 +26,19 @@ Vue.component('odl-buy-ticket', {
   },
   props: ['data']
 })
+let that
 export default {
   name: 'ticket-list',
   created () {
+    that = this
+    this.getAccountInfo()
   },
   data () {
     return {
+      account: {
+        prePayment: 0,
+        paymentAmount: 0
+      },
       columns: ['OTACode', 'VisitDateStart', 'GoodsID', 'TwoDBarCodeOn', 'SalePrice', 'VisitDateEnd', 'SaleID', 'GoodsName', 'operate'],
       options: {
         filterable: false,
@@ -59,8 +71,28 @@ export default {
     }
   },
   methods: {
+    getAccountInfo () {
+      this.axios.post('/partners', {
+        action: 'GetOTADetail',
+        data: {
+          OTACode: getParam('OTACode')
+        }
+      })
+      .then(function (response) {
+        let data = response.data.data
+        console.log(data.PrePayment)
+        that.account.prePayment = data.PrePayment
+        that.account.paymentAmount = data.PaymentAmount
+      })
+      .catch(function (error) {
+        console.log(error)
+      })
+    }
   },
-  components: {
+  filters: {
+    fenToYuan: function (fen) {
+      return getFenToYuan(fen)
+    }
   }
 }
 </script>
