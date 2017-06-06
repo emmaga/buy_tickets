@@ -15,7 +15,7 @@
       <div class="col-xs-4">
         <div class="panel panel-warning scoreboard">
             <div class="panel-heading">当前账户余额</div>
-            <div class="panel-body">{{ account.paymentAmount | fenToYuan }}</div>
+            <div class="panel-body">¥ {{ account.paymentAmount | fenToYuan }}</div>
         </div>
       </div>
     </div>
@@ -66,14 +66,23 @@ export default {
         templates: {
           operate: 'odl-buy-ticket'
         },
+        sortIcon: {
+          up:'',
+          down:''
+        },
         params: {
           action: 'GetOTAProducts',
           count: 99999999999999 // 一页显示数量，不分页
         },
         responseAdapter: function (resp) {
+          let data = resp.data.ProductList
+          data.map(function (item, index, input) {
+            item.TwoDBarCodeOn = item.TwoDBarCodeOn ? '否' : '是'
+            return item
+          })
           return {
-            data: resp.data.ProductList,
-            count: resp.data.ProductList.length
+            data: data,
+            count: data.length
           }
         },
         headings: {

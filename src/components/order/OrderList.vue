@@ -108,6 +108,7 @@ import $ from '@/utils/jquery-v'
 import Vue from 'vue'
 import {ServerTable} from 'vue-tables-2'
 import moment from 'moment'
+import {getCardType, getIsExpired, getCheckStatus} from '@/utils/filters'
 Vue.use(ServerTable)
 Vue.component('odl-tourist', {
   template: '<a class="btn btn-sm btn-primary" href="javascript:void(0);" @click="showTourist">游客</a>',
@@ -235,8 +236,12 @@ export default {
       goodsName: '',
       bookerIDType: 'ID_CARD',
       bookerID: '',
-      columns: ['orderId', 'parterOrderId', 'userOrderId', 'partnerName', 'goodsName', 'price', 'bookPerson', 'bookMobile', 'bookerIDType', 'bookerID', 'orderCreateTime', 'visitDateStart', 'visitDateEnd', 'totalTickets', 'checkedTickets', 'returnedTickets', 'isExpired', 'checkStatus', 'touristBtn', 'refundBtn'],
+      columns: ['orderId', 'parterOrderId', 'userOrderId', 'partnerName', 'goodsName', 'price', 'bookPerson', 'bookMobile', 'bookerIDTypeText', 'bookerID', 'orderCreateTime', 'visitDateStart', 'visitDateEnd', 'totalTickets', 'checkedTickets', 'returnedTickets', 'isExpired', 'checkStatusText', 'touristBtn', 'refundBtn'],
       options: {
+        sortIcon: {
+          up:'',
+          down:''
+        },
         filterable: false,
         perPage: 2,
         templates: {
@@ -274,6 +279,9 @@ export default {
             item.orderCreateTime = moment(new Date(item.orderCreateTime - 0)).format('YYYY-MM-DD HH:mm:ss')
             item.visitDateStart = moment(new Date(item.visitDateStart - 0)).format('YYYY-MM-DD HH:mm:ss')
             item.visitDateEnd = moment(new Date(item.visitDateEnd - 0)).format('YYYY-MM-DD HH:mm:ss')
+            item.bookerIDTypeText = getCardType(item.bookerIDType)
+            item.isExpired = getIsExpired(item.isExpired)
+            item.checkStatusText = getCheckStatus(item.checkStatus)
             return item
           })
           return {
@@ -294,12 +302,12 @@ export default {
           totalTickets: '数量',
           price: '单价',
           bookerID: '证件号',
-          checkStatus: '状态',
+          checkStatusText: '状态',
           checkedTickets: '已检',
           visitDateEnd: '游玩结束日期',
           goodsName: '票名',
           userOrderId: '用户订单号',
-          bookerIDType: '证件类型',
+          bookerIDTypeText: '证件类型',
           touristBtn: '游客',
           refundBtn: '退票'
         }

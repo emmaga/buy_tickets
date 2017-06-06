@@ -7,10 +7,10 @@
       <div class="modal-content">
         <!--header-->
         <div class="modal-header">
-          <button type="button" class="close"  @click="close">
+          <button type="button" class="close" @click="close">
             <span aria-hidden="true">&times;</span>
           </button>
-          <h5 class="modal-title" >下单</h5>
+          <h5 class="modal-title">下单</h5>
         </div>
         <!--header end-->
         <!--body-->
@@ -166,10 +166,10 @@ export default {
   },
   computed: {
     visitDateStart: function () {
-      return moment(this.VisitDateStart).format('YYYY-MM-DD')
+      return moment(this.tInfo.VisitDateStart).format('YYYY-MM-DD')
     },
     visitDateEnd: function () {
-      return moment(this.VisitDateEnd).format('YYYY-MM-DD')
+      return moment(this.tInfo.VisitDateEnd).format('YYYY-MM-DD')
     }
   },
   watch: {
