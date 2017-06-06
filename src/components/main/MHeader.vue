@@ -47,6 +47,8 @@ export default {
       this.$router.push('/login')
     },
     changePW () {
+      var cm = this.$parent.$refs.changePW
+      cm.init()
     }
   }
 }

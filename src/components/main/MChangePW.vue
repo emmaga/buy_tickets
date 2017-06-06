@@ -1,31 +1,41 @@
 <template>
   <div class="temp" v-show="isShow">
-    可退数量：{{ waitingCheck }}
-    <form @submit.prevent="refund">
+    <form @submit.prevent="changePW">
       <div class="form-group">
-        <!--退票数量-->
-        <label class="control-label" for="cancelCount">退票数量</label> 
+        <!--原密码-->
+        <label class="control-label" for="oldPassword">原密码</label> 
         <p :class="{ 'control': true }">
-          <input min="1" :max="waitingCheck" required v-validate="'required'" :class="{'form-control': true, 'has-error': errors.has('cancelCount') }" v-model="cancelCount" name="cancelCount" type="number" placeholder="请输入退票数量">
+          <input required v-validate="'required'" :class="{'form-control': true, 'has-error': errors.has('oldPassword') }" v-model="oldPassword" name="oldPassword" type="password" placeholder="请输入原密码">
+        </p>
+        <!--新密码-->
+        <label class="control-label" for="newPassword">新密码</label> 
+        <p :class="{ 'control': true }">
+          <input required v-validate="'required'" :class="{'form-control': true, 'has-error': errors.has('newPassword') }" v-model="newPassword" name="newPassword" type="password" placeholder="请输入新密码">
+        </p>
+        <!--新密码确认-->
+        <label class="control-label" for="confirmPassword">确认新密码</label> 
+        <p :class="{ 'control': true }">
+          <input required v-validate="'required'" :class="{'form-control': true, 'has-error': errors.has('confirmPassword') }" v-model="confirmPassword" name="confirmPassword" type="password" placeholder="请再次输入新密码">
         </p>
       </div>
-      <button type="submit" :disabled="refunding">退票</button>
+      <button type="submit" :disabled="changing">修改</button>
       <a @click="close">取消</a>
     </form>
   </div>
 </template>
 
 <script>
+import {md5} from '@/utils'
 let that
 export default {
-  name: 'm-refund',
+  name: 'm-changePW',
   data () {
     return {
       isShow: false,
-      orderId: 0,
-      waitingCheck: 0,
-      cancelCount: '',
-      refunding: false
+      changing: false,
+      oldPassword: '',
+      newPassword: '',
+      confirmPassword: ''
     }
   },
   created () {
@@ -34,32 +44,32 @@ export default {
   methods: {
     init () {
       this.isShow = true
+      this.oldPassword = ''
+      this.confirmPassword = ''
+      this.newPassword = ''
     },
     close () {
       this.isShow = false
     },
-    refund () {
-      this.refunding = true
+    changePW () {
+      this.changing = true
       this.axios.post('/otauser', {
-        action: 'OTACancelOrder',
-        orderId: this.orderId - 0,
-        cancelSerial: new Date().getTime() + '' + Math.floor(Math.random(100)*100),
-        cancelCount: this.cancelCount
+        action: 'ResetOTAUserPassword',
+        oldPassword: md5()(this.oldPassword),
+        confirmPassword: md5()(this.confirmPassword),
+        newPassword: md5()(this.newPassword)
       })
       .then(function (response) {
         let data = response.data
         if (data.rescode === 200) {
-          alert('退票已成功')
-          that.$router.go({
-            path: '/main/orderList',
-            force: true
-          })
+          alert('修改成功')
+          that.close()
         }
-        that.refunding = false
+        that.changing = false
       })
       .catch(function (error) {
         console.log(error)
-        that.refunding = false
+        that.changing = false
       })
     }
   }
@@ -70,7 +80,7 @@ export default {
 <style scoped>
 .temp {
   position: fixed;
-  z-index: 999;
+  z-index: 9999999;
   top: 0px;
   left: 0px;
   width: 100%;

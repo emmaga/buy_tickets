@@ -6,6 +6,7 @@
     <m-tourist ref="tourist"></m-tourist>
     <m-buy-ticket ref="buyTicket"></m-buy-ticket>
     <m-refund ref="refund"></m-refund>
+    <m-changePW ref="changePW"></m-changePW>
   </div>
 </template>
 
@@ -15,6 +16,7 @@ import MNav from './MNav'
 import MTourist from './MTourist'
 import MBuyTicket from './MBuyTicket'
 import MRefund from './MRefund'
+import MChangePW from './MChangePW'
 export default {
   name: 'main-frame',
   data () {
@@ -22,7 +24,7 @@ export default {
     }
   },
   components: {
-    MHeader, MNav, MTourist, MBuyTicket, MRefund
+    MHeader, MNav, MTourist, MBuyTicket, MRefund, MChangePW
   }
 }
 </script>

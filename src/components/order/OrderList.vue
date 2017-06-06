@@ -125,13 +125,13 @@ Vue.component('odl-refund', {
     showRefund () {
       var rm = this.$parent.$parent.$parent.$refs.refund
       rm.orderId = this.data.orderId
-      rm.waitingCheck = this.data.waitingTickets
+      rm.waitingCheck = this.data.totalTickets - this.data.checkedTickets
       rm.init()
     }
   },
   computed: {
     disabled () {
-      return this.data.waitingTickets === 0
+      return (this.data.totalTickets - this.data.checkedTickets) === 0
     }
   },
   props: ['data']
@@ -234,7 +234,7 @@ export default {
       goodsName: '',
       bookerIDType: 'ID_CARD',
       bookerID: '',
-      columns: ['orderId', 'partnerName', 'orderCreateTime', 'returnedTickets', 'isExpired', 'bookMobile', 'visitDateStart', 'bookPerson', 'parterOrderId', 'totalTickets', 'price', 'bookerID', 'checkStatus', 'checkedTickets', 'visitDateEnd', 'goodsName', 'userOrderId', 'bookerIDType', 'waitingTickets', 'touristBtn', 'refundBtn'],
+      columns: ['orderId', 'partnerName', 'orderCreateTime', 'returnedTickets', 'isExpired', 'bookMobile', 'visitDateStart', 'bookPerson', 'parterOrderId', 'totalTickets', 'price', 'bookerID', 'checkStatus', 'checkedTickets', 'visitDateEnd', 'goodsName', 'userOrderId', 'bookerIDType', 'touristBtn', 'refundBtn'],
       options: {
         filterable: false,
         perPage: 2,
@@ -299,7 +299,6 @@ export default {
           goodsName: '票名',
           userOrderId: '用户订单号',
           bookerIDType: '证件类型',
-          waitingTickets: '待检',
           touristBtn: '游客',
           refundBtn: '退票'
         }
