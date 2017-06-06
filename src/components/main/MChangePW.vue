@@ -1,26 +1,49 @@
 <template>
-  <div class="temp" v-show="isShow">
-    <form @submit.prevent="changePW">
-      <div class="form-group">
-        <!--原密码-->
-        <label class="control-label" for="oldPassword">原密码</label> 
-        <p :class="{ 'control': true }">
-          <input required v-validate="'required'" :class="{'form-control': true, 'has-error': errors.has('oldPassword') }" v-model="oldPassword" name="oldPassword" type="password" placeholder="请输入原密码">
-        </p>
-        <!--新密码-->
-        <label class="control-label" for="newPassword">新密码</label> 
-        <p :class="{ 'control': true }">
-          <input required v-validate="'required'" :class="{'form-control': true, 'has-error': errors.has('newPassword') }" v-model="newPassword" name="newPassword" type="password" placeholder="请输入新密码">
-        </p>
-        <!--新密码确认-->
-        <label class="control-label" for="confirmPassword">确认新密码</label> 
-        <p :class="{ 'control': true }">
-          <input required v-validate="'required'" :class="{'form-control': true, 'has-error': errors.has('confirmPassword') }" v-model="confirmPassword" name="confirmPassword" type="password" placeholder="请再次输入新密码">
-        </p>
-      </div>
-      <button type="submit" :disabled="changing">修改</button>
-      <a @click="close">取消</a>
-    </form>
+  <div  class="modal fade in" v-show="isShow">
+  <div class="modal-backdrop fade in"></div>
+    <div class="modal-dialog autoscroll" >
+      <div class="modal-content">
+        <!--header-->
+        <div class="modal-header">
+          <button type="button" class="close"  @click="close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <h5 class="modal-title" >修改密码</h5>
+        </div>
+
+        <form @submit.prevent="changePW">
+
+          <!--body-->
+          <div class="modal-body">
+            <div class="form-group">
+              <!--原密码-->
+              <label class="control-label" for="oldPassword">原密码</label> 
+              <p :class="{ 'control': true }">
+                <input required v-validate="'required'" :class="{'form-control': true, 'has-error': errors.has('oldPassword') }" v-model="oldPassword" name="oldPassword" type="password" placeholder="请输入原密码">
+              </p>
+              <!--新密码-->
+              <label class="control-label" for="newPassword">新密码</label> 
+              <p :class="{ 'control': true }">
+                <input required v-validate="'required'" :class="{'form-control': true, 'has-error': errors.has('newPassword') }" v-model="newPassword" name="newPassword" type="password" placeholder="请输入新密码">
+              </p>
+              <!--新密码确认-->
+              <label class="control-label" for="confirmPassword">确认新密码</label> 
+              <p :class="{ 'control': true }">
+                <input required v-validate="'required'" :class="{'form-control': true, 'has-error': errors.has('confirmPassword') }" v-model="confirmPassword" name="confirmPassword" type="password" placeholder="请再次输入新密码">
+              </p>
+            </div>
+          </div>
+
+          <!--footer-->
+          <div class="modal-footer">
+            <a class="btn btn-default btn-sm" @click="close">取消</a>
+            <button type="submit" :disabled="changing" class="btn btn-primary btn-sm">修改</button>
+          </div>
+
+
+        </form>
+      </div>  
+    </div>
   </div>
 </template>
 

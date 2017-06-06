@@ -110,7 +110,7 @@ import {ServerTable} from 'vue-tables-2'
 import moment from 'moment'
 Vue.use(ServerTable)
 Vue.component('odl-tourist', {
-  template: '<a class="fa fa-edit" href="javascript:void(0);" @click="showTourist">游客</a>',
+  template: '<a class="btn btn-sm btn-primary" href="javascript:void(0);" @click="showTourist">游客</a>',
   methods: {
     showTourist () {
       var tm = this.$parent.$parent.$parent.$refs.tourist
@@ -121,7 +121,7 @@ Vue.component('odl-tourist', {
   props: ['data']
 })
 Vue.component('odl-refund', {
-  template: '<button :disabled="disabled" class="fa fa-edit" href="javascript:void(0);" @click="showRefund">退票</button>',
+  template: '<button :disabled="disabled" class="btn btn-sm btn-danger" href="javascript:void(0);" @click="showRefund">退票</button>',
   methods: {
     showRefund () {
       var rm = this.$parent.$parent.$parent.$refs.refund
@@ -235,7 +235,7 @@ export default {
       goodsName: '',
       bookerIDType: 'ID_CARD',
       bookerID: '',
-      columns: ['orderId', 'partnerName', 'orderCreateTime', 'returnedTickets', 'isExpired', 'bookMobile', 'visitDateStart', 'bookPerson', 'parterOrderId', 'totalTickets', 'price', 'bookerID', 'checkStatus', 'checkedTickets', 'visitDateEnd', 'goodsName', 'userOrderId', 'bookerIDType', 'touristBtn', 'refundBtn'],
+      columns: ['orderId', 'parterOrderId', 'userOrderId', 'partnerName', 'goodsName', 'price', 'bookPerson', 'bookMobile', 'bookerIDType', 'bookerID', 'orderCreateTime', 'visitDateStart', 'visitDateEnd', 'totalTickets', 'checkedTickets', 'returnedTickets', 'isExpired', 'checkStatus', 'touristBtn', 'refundBtn'],
       options: {
         filterable: false,
         perPage: 2,
