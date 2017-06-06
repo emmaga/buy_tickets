@@ -1,12 +1,35 @@
 <template>
-  <div class="temp" v-show="isShow">
-    <a @click="close">close</a>
-    <div v-for="item in tourists">
-      {{ item.TravellerName }}
-      {{ item.TravellerMobile }}
-      {{ item.CardType | cardType }}
-      {{ item.CardID}}
+  <div  class="modal fade in" v-show="isShow">
+    <div class="modal-backdrop fade in"></div>
+    <div class="modal-dialog autoscroll" >
+      <div class="modal-content">
+        <!--header-->
+        <div class="modal-header">
+          <button type="button" class="close"  @click="close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <h5 class="modal-title" >游客</h5>
+        </div>
+        <!--body-->
+        <div class="modal-body">
+          <div v-for="item in tourists">
+            <label>游客{{}}</label>
+            <br>姓名：&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp{{ item.TravellerName }}
+            <br>手机：&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp{{ item.TravellerMobile }}
+            <br>证件类型：{{ item.CardType | cardType }}
+            <br>证件号：&nbsp&nbsp&nbsp{{ item.CardID}}
+          </div>
+        </div>
+        <!--footer-->
+        <!--footer-->
+        <div class="modal-footer">
+          <a class="btn btn-default btn-sm" @click="close">取消</a>
+        </div>
+
+      </div>
     </div>
+
+
   </div>
 </template>
 
@@ -65,13 +88,4 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.temp {
-  position: fixed;
-  z-index: 999;
-  top: 0px;
-  left: 0px;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.6);
-}
 </style>

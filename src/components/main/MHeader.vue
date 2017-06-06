@@ -11,10 +11,12 @@
             <a> {{ userName }} </a>
           </li>
           <li>
+            <a @click="changePW">修改密码</a>
+          </li>
+          <li>
             <a @click="exit">
               <i class="glyphicon glyphicon-lock"></i> 退出
             </a>
-            <a @click="changePW">修改密码</a>
           </li>
         </ul>
       </div>
