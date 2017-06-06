@@ -12,8 +12,8 @@
         </div>
         <!--body-->
         <div class="modal-body">
-          <div v-for="item in tourists">
-            <label>游客{{}}</label>
+          <div v-for="(item, index) in tourists">
+            <label>游客{{ index + 1 }}</label>
             <br>姓名：&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp{{ item.TravellerName }}
             <br>手机：&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp{{ item.TravellerMobile }}
             <br>证件类型：{{ item.CardType | cardType }}
