@@ -17,11 +17,6 @@
       <p :class="{ 'control': true }">
         <input required v-validate="'required'" :class="{'form-control': true, 'has-error': errors.has('OTACode') }" v-model="OTACode" name="OTACode" type="text" placeholder="请输入分销商code">
       </p>
-      <!--项目code-->
-      <label class="control-label" for="projectName">项目code</label> 
-      <p :class="{ 'control': true }">
-        <input required v-validate="'required'" :class="{'form-control': true, 'has-error': errors.has('projectName') }" v-model="projectName" name="projectName" type="text" placeholder="请输入项目code">
-      </p>
       <!--登陆按钮-->
       <button :disabled="logining" type="submit">登录</button>
     </form>
@@ -39,7 +34,6 @@ export default {
       account: '',
       password: '',
       OTACode: '',
-      projectName: '',
       logining: false
     }
   },
@@ -54,7 +48,7 @@ export default {
       this.logining = true
       this.axios.post('/loginOTA', {
         action: 'GetToken',
-        projectName: this.projectName,
+        projectName: 'xitangdev',
         OTACode: this.OTACode,
         account: this.account,
         // password: 'd0970714757783e6cf17b26fb8e2298f'

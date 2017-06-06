@@ -1,6 +1,5 @@
 <template>
   <div>
-    <h1>{{ msg }}</h1>
     <m-header></m-header>
     <m-nav></m-nav>
     <router-view></router-view>
@@ -18,7 +17,6 @@ export default {
   name: 'main-frame',
   data () {
     return {
-      msg: '清云购票平台'
     }
   },
   components: {

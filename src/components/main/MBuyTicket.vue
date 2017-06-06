@@ -44,10 +44,10 @@
         <!--同游人信息-->
         <div v-for="(item, index) in travelerList">
           <!--姓名-->
-          <label class="control-label">同游人{{ index }}姓名</label>
+          <label class="control-label">同游人{{ index + 1 }}姓名</label>
           <input v-model="item.name" type="text" placeholder="请输入姓名">
           <!--手机-->
-          <label class="control-label">同游人{{ index }}手机号</label>
+          <label class="control-label">同游人{{ index + 1 }}手机号</label>
             <input v-model="item.mobile" type="text" placeholder="请输入手机号">
           <!--证件类型-->
           <select v-model="item.idType">
@@ -64,7 +64,7 @@
             <option value="OTHER">其他</option>
           </select>
           <!--证件号-->
-          <label class="control-label">同游人{{ index }}证件号</label> 
+          <label class="control-label">同游人{{ index + 1 }}证件号</label> 
           <input v-model="item.idNum" type="text" placeholder="请输入证件号">
         </div>
       </div>
@@ -108,7 +108,10 @@ export default {
       let count = newCount
       for (let i = 0; i < count; i++) {
         this.travelerList[i] = {
-          idType: 'ID_CARD'
+          name: '',
+          mobile: '',
+          idType: 'ID_CARD',
+          idNum: ''
         }
       }
       this.travelerList.length = count
