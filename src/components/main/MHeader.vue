@@ -2,6 +2,7 @@
   <header>
     header
     {{ userName }}
+    <a @click="changePW">修改密码</a>
     <a @click="exit">退出</a>
   </header>
 </template>
@@ -27,6 +28,8 @@ export default {
       clearParam('clearToken')
       this.$store.commit('delUserName')
       this.$router.push('/login')
+    },
+    changePW () {
     }
   }
 }
