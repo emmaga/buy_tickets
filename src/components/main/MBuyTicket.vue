@@ -93,9 +93,8 @@
             </div>
 
 
-            <hr>
-
             <div v-for="(item, index) in travelerList">
+              <hr>
               <!--同游人信息-->
               <div class="form-group" >
                 <!--姓名-->
@@ -132,7 +131,6 @@
                   </div>
                 </div>
               </div>
-              <hr>
             </div>
 
 
