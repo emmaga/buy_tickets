@@ -14,6 +14,7 @@
         </div>
         <!--header end-->
         <!--body-->
+          <form @submit.prevent="buy">
         <div class="modal-body">
           <div class="row">
             <div class="col-xs-12">
@@ -27,7 +28,6 @@
 
 
 
-          <form @submit.prevent="buy">
 
 
             <div class="form-group">
@@ -135,7 +135,6 @@
 
 
               
-          </form>
         </div>
         <!--body end-->
 
@@ -144,6 +143,7 @@
           <a class="btn btn-default btn-sm" @click="close">取消</a>
           <button type="submit" :disabled="saving" class="btn btn-primary btn-sm">下单</button>
         </div>
+          </form>
       </div>
     </div>
   </div>
