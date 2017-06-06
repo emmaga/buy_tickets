@@ -25,7 +25,7 @@
     <hr class="break-space-double">
 
     <!-- login -->
-    <div class="row">
+    <div class="">
       <div class="center-block fixed-width-5">
         <div class="panel panel-default">
           <div class="panel-heading">
