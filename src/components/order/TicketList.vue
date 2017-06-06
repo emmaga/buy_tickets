@@ -36,7 +36,7 @@ import {getParam} from '@/utils'
 import {getFenToYuan} from '@/utils/filters'
 Vue.use(ServerTable)
 Vue.component('odl-buy-ticket', {
-  template: '<a class="fa fa-edit" href="javascript:void(0);" @click="showBuyTicket">下单</a>',
+  template: '<a class="btn btn-sm btn-primary" href="javascript:void(0);" @click="showBuyTicket">下单</a>',
   methods: {
     showBuyTicket () {
       var bm = this.$parent.$parent.$parent.$refs.buyTicket
@@ -59,7 +59,7 @@ export default {
         prePayment: 0,
         paymentAmount: 0
       },
-      columns: ['OTACode', 'VisitDateStart', 'GoodsID', 'TwoDBarCodeOn', 'SalePrice', 'VisitDateEnd', 'SaleID', 'GoodsName', 'operate'],
+      columns: ['GoodsName', 'SalePrice', 'VisitDateStart', 'VisitDateEnd', 'OTACode', 'GoodsID', 'SaleID', 'TwoDBarCodeOn', 'operate'],
       options: {
         filterable: false,
         perPage: 2,
@@ -77,14 +77,14 @@ export default {
           }
         },
         headings: {
-          OTACode: 'OTACode',
-          VisitDateStart: 'VisitDateStart',
-          GoodsID: 'GoodsID',
-          TwoDBarCodeOn: 'TwoDBarCodeOn',
-          SalePrice: 'SalePrice',
-          VisitDateEnd: 'VisitDateEnd',
-          SaleID: 'SaleID',
-          GoodsName: 'GoodsName',
+          OTACode: '分销商码',
+          VisitDateStart: '游玩开始时间',
+          GoodsID: '商品码',
+          TwoDBarCodeOn: '启用二维码',
+          SalePrice: '单价',
+          VisitDateEnd: '游玩结束时间',
+          SaleID: '销售码',
+          GoodsName: '商品名',
           operate: '操作'
         }
       }
