@@ -72,6 +72,23 @@ Vue.component('odl-tourist', {
   },
   props: ['data']
 })
+Vue.component('odl-refund', {
+  template: '<button :disabled="disabled" class="fa fa-edit" href="javascript:void(0);" @click="showRefund">退票</button>',
+  methods: {
+    showRefund () {
+      var rm = this.$parent.$parent.$parent.$refs.refund
+      rm.orderId = this.data.orderId
+      rm.waitingCheck = this.data.waitingTickets
+      rm.init()
+    }
+  },
+  computed: {
+    disabled () {
+      return this.data.waitingTickets === 0
+    }
+  },
+  props: ['data']
+})
 let that
 let initStartCreateTime = new Date().getTime()
 let initEndCreateTime = new Date(new Date().getTime() + 30 * 24 * 60 * 60 * 1000).getTime()
@@ -170,12 +187,13 @@ export default {
       goodsName: '',
       bookerIDType: 'ID_CARD',
       bookerID: '',
-      columns: ['orderId', 'partnerName', 'orderCreateTime', 'returnedTickets', 'isExpired', 'bookMobile', 'visitDateStart', 'bookPerson', 'parterOrderId', 'totalTickets', 'price', 'bookerID', 'checkStatus', 'checkedTickets', 'visitDateEnd', 'goodsName', 'userOrderId', 'bookerIDType', 'waitingTickets', 'operate'],
+      columns: ['orderId', 'partnerName', 'orderCreateTime', 'returnedTickets', 'isExpired', 'bookMobile', 'visitDateStart', 'bookPerson', 'parterOrderId', 'totalTickets', 'price', 'bookerID', 'checkStatus', 'checkedTickets', 'visitDateEnd', 'goodsName', 'userOrderId', 'bookerIDType', 'waitingTickets', 'touristBtn', 'refundBtn'],
       options: {
         filterable: false,
         perPage: 2,
         templates: {
-          operate: 'odl-tourist'
+          touristBtn: 'odl-tourist',
+          refundBtn: 'odl-refund'
         },
         params: {
           action: 'GetOTAOrderListByPage',
@@ -235,7 +253,8 @@ export default {
           userOrderId: '用户订单号',
           bookerIDType: '证件类型',
           waitingTickets: '待检',
-          operate: '操作'
+          touristBtn: '游客',
+          refundBtn: '退票'
         }
       }
     }

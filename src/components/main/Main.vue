@@ -5,6 +5,7 @@
     <router-view></router-view>
     <m-tourist ref="tourist"></m-tourist>
     <m-buy-ticket ref="buyTicket"></m-buy-ticket>
+    <m-refund ref="refund"></m-refund>
   </div>
 </template>
 
@@ -13,6 +14,7 @@ import MHeader from './MHeader'
 import MNav from './MNav'
 import MTourist from './MTourist'
 import MBuyTicket from './MBuyTicket'
+import MRefund from './MRefund'
 export default {
   name: 'main-frame',
   data () {
@@ -20,7 +22,7 @@ export default {
     }
   },
   components: {
-    MHeader, MNav, MTourist, MBuyTicket
+    MHeader, MNav, MTourist, MBuyTicket, MRefund
   }
 }
 </script>

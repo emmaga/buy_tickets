@@ -165,11 +165,13 @@ export default {
       })
       .then(function (response) {
         let data = response.data
-        console.log(data)
         that.saving = false
         if (data.rescode === 200) {
           alert('下单成功')
-          that.close()
+          that.$router.go({
+            path: '/main/ticketList',
+            force: true
+          })
         }
       })
       .catch(function (error) {
