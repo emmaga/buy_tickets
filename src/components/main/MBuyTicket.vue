@@ -1,76 +1,106 @@
 <template>
-  <div class="temp" v-show="isShow">
-    <!--价格码，产品名称，可游玩时间，售价-->
-    价格码 {{ tInfo.SaleID }} {{ tInfo.GoodsName }} 可游玩日期 {{ visitDateStart }} - {{ visitDateEnd }} {{ tInfo.SalePrice }}元／张
-    <form @submit.prevent="buy">
-      <div class="form-group">
-        <!--订单基本信息-->
-        游玩日期 <input type="text" name="visitTime" />
-        <!--购票数量-->
-        <label class="control-label" for="ticketCount">购票数量</label> 
-        <p :class="{ 'control': true }">
-          <input min="1" required v-validate="'required'" :class="{'form-control': true, 'has-error': errors.has('ticketCount') }" v-model="ticketCount" name="ticketCount" type="number" placeholder="请输入购票数量">
-        </p>
-        <!--联系人信息-->
-        <!--姓名-->
-        <label class="control-label" for="contactsName">预订人姓名</label> 
-        <p :class="{ 'control': true }">
-          <input required v-validate="'required'" :class="{'form-control': true, 'has-error': errors.has('contactsName') }" v-model="contactsName" name="contactsName" type="text" placeholder="请输入预订人姓名">
-        </p>
-        <!--手机-->
-        <label class="control-label" for="contactsMobile">预订人手机号</label> 
-        <p :class="{ 'control': true }">
-          <input required v-validate="'required'" :class="{'form-control': true, 'has-error': errors.has('contactsMobile') }" v-model="contactsMobile" name="contactsMobile" type="text" placeholder="请输入预订人手机号">
-        </p>
-        <!--证件类型-->
-        <select v-model="contactsIdType">
-          <option value="ID_CARD">身份证</option>
-          <option value="ERTONG">儿童无证件</option>
-          <option value="GANGAO">港澳通行证</option>
-          <option value="HUZHAO">护照</option>
-          <option value="SHIBING">士兵证</option>
-          <option value="JUNGUAN">军官证</option>
-          <option value="HUKOUBO">户口薄</option>
-          <option value="CHUSHENGZHENGMING">出生证明</option>
-          <option value="TAIBAO">台湾通行证</option>
-          <option value="TAIBAOZHENG">台胞证</option>
-          <option value="OTHER">其他</option>
-        </select>
-        <!--证件号-->
-        <label class="control-label" for="contactsIdNum">预订人证件号</label> 
-        <p :class="{ 'control': true }">
-          <input required v-validate="'required'" :class="{'form-control': true, 'has-error': errors.has('contactsIdNum') }" v-model="contactsIdNum" name="contactsIdNum" type="text" placeholder="请输入预订人证件号">
-        </p>
-        <!--同游人信息-->
-        <div v-for="(item, index) in travelerList">
-          <!--姓名-->
-          <label class="control-label">同游人{{ index + 1 }}姓名</label>
-          <input v-model="item.name" type="text" placeholder="请输入姓名">
-          <!--手机-->
-          <label class="control-label">同游人{{ index + 1 }}手机号</label>
-            <input v-model="item.mobile" type="text" placeholder="请输入手机号">
-          <!--证件类型-->
-          <select v-model="item.idType">
-            <option value="ID_CARD">身份证</option>
-            <option value="ERTONG">儿童无证件</option>
-            <option value="GANGAO">港澳通行证</option>
-            <option value="HUZHAO">护照</option>
-            <option value="SHIBING">士兵证</option>
-            <option value="JUNGUAN">军官证</option>
-            <option value="HUKOUBO">户口薄</option>
-            <option value="CHUSHENGZHENGMING">出生证明</option>
-            <option value="TAIBAO">台湾通行证</option>
-            <option value="TAIBAOZHENG">台胞证</option>
-            <option value="OTHER">其他</option>
-          </select>
-          <!--证件号-->
-          <label class="control-label">同游人{{ index + 1 }}证件号</label> 
-          <input v-model="item.idNum" type="text" placeholder="请输入证件号">
+  <div class="modal fade in" v-show="isShow">
+    <!-- 弹窗背景 -->
+    <div class="modal-backdrop fade in"></div>
+    <!-- 弹窗内容 -->
+    <div class="modal-dialog autoscroll" >
+      <div class="modal-content">
+        <!--header-->
+        <div class="modal-header">
+          <button type="button" class="close"  @click="close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <h5 class="modal-title" >下单</h5>
         </div>
+        <!--header end-->
+        <!--body-->
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-xs-12">
+              <!--价格码，产品名称，可游玩时间，售价-->
+              <h3>{{ tInfo.GoodsName }}：{{ tInfo.SalePrice }}元／张</h3>
+              <h5>可游玩日期 {{ visitDateStart }} - {{ visitDateEnd }}</h5>
+              <h5>价格码 {{ tInfo.SaleID }} </h5>
+            </div>
+          </div>
+          <hr>
+          <form @submit.prevent="buy">
+            <div class="form-group">
+              <!--订单基本信息-->
+              游玩日期
+              <input type="text" name="visitTime" />
+            </div>
+            <div class="form-group">
+              <!--购票数量-->
+              <label class="control-label" for="ticketCount">购票数量</label> 
+              <p :class="{ 'control': true }">
+                <input min="1" required v-validate="'required'" :class="{'form-control': true, 'has-error': errors.has('ticketCount') }" v-model="ticketCount" name="ticketCount" type="number" placeholder="请输入购票数量">
+              </p>
+              <!--联系人信息-->
+              <!--姓名-->
+              <label class="control-label" for="contactsName">预订人姓名</label> 
+              <p :class="{ 'control': true }">
+                <input required v-validate="'required'" :class="{'form-control': true, 'has-error': errors.has('contactsName') }" v-model="contactsName" name="contactsName" type="text" placeholder="请输入预订人姓名">
+              </p>
+              <!--手机-->
+              <label class="control-label" for="contactsMobile">预订人手机号</label> 
+              <p :class="{ 'control': true }">
+                <input required v-validate="'required'" :class="{'form-control': true, 'has-error': errors.has('contactsMobile') }" v-model="contactsMobile" name="contactsMobile" type="text" placeholder="请输入预订人手机号">
+              </p>
+              <!--证件类型-->
+              <select v-model="contactsIdType">
+                <option value="ID_CARD">身份证</option>
+                <option value="ERTONG">儿童无证件</option>
+                <option value="GANGAO">港澳通行证</option>
+                <option value="HUZHAO">护照</option>
+                <option value="SHIBING">士兵证</option>
+                <option value="JUNGUAN">军官证</option>
+                <option value="HUKOUBO">户口薄</option>
+                <option value="CHUSHENGZHENGMING">出生证明</option>
+                <option value="TAIBAO">台湾通行证</option>
+                <option value="TAIBAOZHENG">台胞证</option>
+                <option value="OTHER">其他</option>
+              </select>
+              <!--证件号-->
+              <label class="control-label" for="contactsIdNum">预订人证件号</label> 
+              <p :class="{ 'control': true }">
+                <input required v-validate="'required'" :class="{'form-control': true, 'has-error': errors.has('contactsIdNum') }" v-model="contactsIdNum" name="contactsIdNum" type="text" placeholder="请输入预订人证件号">
+              </p>
+              <!--同游人信息-->
+              <div v-for="(item, index) in travelerList">
+                <!--姓名-->
+                <label class="control-label">同游人{{ index + 1 }}姓名</label>
+                <input v-model="item.name" type="text" placeholder="请输入姓名">
+                <!--手机-->
+                <label class="control-label">同游人{{ index + 1 }}手机号</label>
+                  <input v-model="item.mobile" type="text" placeholder="请输入手机号">
+                <!--证件类型-->
+                <select v-model="item.idType">
+                  <option value="ID_CARD">身份证</option>
+                  <option value="ERTONG">儿童无证件</option>
+                  <option value="GANGAO">港澳通行证</option>
+                  <option value="HUZHAO">护照</option>
+                  <option value="SHIBING">士兵证</option>
+                  <option value="JUNGUAN">军官证</option>
+                  <option value="HUKOUBO">户口薄</option>
+                  <option value="CHUSHENGZHENGMING">出生证明</option>
+                  <option value="TAIBAO">台湾通行证</option>
+                  <option value="TAIBAOZHENG">台胞证</option>
+                  <option value="OTHER">其他</option>
+                </select>
+                <!--证件号-->
+                <label class="control-label">同游人{{ index + 1 }}证件号</label> 
+                <input v-model="item.idNum" type="text" placeholder="请输入证件号">
+              </div>
+            </div>
+            <button type="submit" :disabled="saving">下单</button>
+            <a @click="close">取消</a>
+          </form>
+        </div>
+        <!--body end-->
+
       </div>
-      <button type="submit" :disabled="saving">下单</button>
-      <a @click="close">取消</a>
-    </form>
+    </div>
   </div>
 </template>
 

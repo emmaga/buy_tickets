@@ -49,7 +49,15 @@ th[ng-init]{
 .modal{
   overflow-y: auto;
   background-color: rgba(0,0,0,.55);
+  display: initial;
 }
+.modal-backdrop{
+  z-index: 1
+}
+.modal-dialog{
+  z-index: 2
+}
+
 .overflow-ellipsis{
   white-space: nowrap;
   text-overflow: ellipsis;
