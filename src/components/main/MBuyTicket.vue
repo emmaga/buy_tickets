@@ -69,7 +69,7 @@
               <label class="control-label" for="contactsIdNum">预订人证件号</label>
               <div class="row">
                 <!--证件类型-->
-                <div class="col-xs-3">
+                <div class="col-xs-3 col-condensed">
                   <select v-model="contactsIdType" class="form-control">
                     <option value="ID_CARD">身份证</option>
                     <option value="ERTONG">儿童无证件</option>
@@ -84,7 +84,7 @@
                     <option value="OTHER">其他</option>
                   </select>
                 </div>
-                <div class="col-xs-9">
+                <div class="col-xs-9 col-condensed">
                   <p :class="{ 'control': true }">
                     <input required v-validate="'required'" :class="{'form-control': true, 'has-error': errors.has('contactsIdNum') }" v-model="contactsIdNum" name="contactsIdNum" type="text" placeholder="请输入预订人证件号">
                   </p>
@@ -110,7 +110,7 @@
                 <!--证件号-->
                 <label class="control-label">同游人{{ index + 1 }}证件号</label>
                 <div class="row">
-                  <div class="col-xs-3">
+                  <div class="col-xs-3 col-condensed">
                     <!--证件类型-->
                     <select v-model="item.idType" class="form-control">
                       <option value="ID_CARD">身份证</option>
@@ -126,7 +126,7 @@
                       <option value="OTHER">其他</option>
                     </select>
                   </div>
-                  <div class="col-xs-9">
+                  <div class="col-xs-9 col-condensed">
                     <input v-model="item.idNum" type="text" class="form-control" placeholder="请输入证件号">
                   </div>
                 </div>
