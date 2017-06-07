@@ -74,7 +74,7 @@ export default {
             defaultOption:'Select {column}' // default option for list filters
         },
         filterable: false,
-        perPage: 2,
+        perPage: 99999999999999,
         templates: {
           operate: 'odl-buy-ticket'
         },

@@ -336,7 +336,7 @@ export default {
           action: 'GetOTAOrderListByPage',
           sortBy: 'OrderCreateTime',
           orderBy: 'desc',
-          count: 2, // 一页显示数量
+          count: 15, // 一页显示数量
           search: {
             orderId: '',
             parterOrderId: '',
