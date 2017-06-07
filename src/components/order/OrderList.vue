@@ -67,7 +67,7 @@
       <!--商品名-->
       <input class="flex-item form-control" v-model="goodsName" placeholder="商品名">
       <!--证件类型-->
-      <select class="flex-item form-control" v-model="bookerIDType" style="border-right:none">
+      <select class="flex-item form-control" v-model="bookerIDType" style="border-right:none; max-width:120px;">
         <option value="ID_CARD">身份证</option>
         <option value="ERTONG">儿童无证件</option>
         <option value="GANGAO">港澳通行证</option>
