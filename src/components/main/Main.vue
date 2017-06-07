@@ -1,6 +1,7 @@
 <template>
   <div>
     <m-header></m-header>
+    <div class="test">hi</div>
     <m-nav></m-nav>
     <router-view></router-view>
     <m-tourist ref="tourist"></m-tourist>
@@ -11,6 +12,7 @@
 </template>
 
 <script>
+
 import MHeader from './MHeader'
 import MNav from './MNav'
 import MTourist from './MTourist'
@@ -30,21 +32,10 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-h1, h2 {
-  font-weight: normal;
-}
-
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-
+<style scoped lang="stylus">
+@import '../../stylus/app'
+// .test
+//   color: red
 a {
   color: #42b983;
 }

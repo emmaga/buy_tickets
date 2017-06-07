@@ -37,6 +37,9 @@
               <label class="control-label" for="ticketCount">购票数量</label> 
               <p :class="{ 'control': true }">
                 <input min="1" max="50" required v-validate="'required'" :class="{'form-control': true, 'has-error': errors.has('ticketCount') }" v-model="ticketCount" name="ticketCount" type="number" placeholder="请输入购票数量">
+                <i class="help" style="color:rgb(0,150,200)">
+                  <small>上限：50张</small>
+                </i>
               </p>
             </div>
 
@@ -174,6 +177,10 @@ export default {
   },
   watch: {
     ticketCount: function (newCount) {
+      if (newCount > 50) {
+        this.ticketCount = 50
+        newCount = 50
+      }
       let count = newCount
       for (let i = 0; i < count; i++) {
         this.travelerList[i] = {
@@ -284,16 +291,6 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.temp {
-  position: fixed;
-  z-index: 999;
-  top: 0px;
-  left: 0px;
-  width: 100%;
-  height: 100%;
-  /*background-color: rgba(0, 0, 0, 0.6);*/
-  background-color: white;
-}
 .has-error {
   border: 1px solid red;
 }
