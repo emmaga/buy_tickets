@@ -12,7 +12,7 @@
 
     <div class="row">
       <!--检票状态-->
-      <div class="controls btn-group col-sm-6 col-condensed">
+      <div class="controls btn-group col-md-2  col-condensed">
         <label>检票状态</label>
         <select v-model="checkStatus" class="form-control">
           <option value="all">全部检票状态</option>
@@ -23,7 +23,7 @@
         </select>
       </div>
       <!--是否过期-->
-      <div class="controls btn-group col-sm-6 col-condensed">
+      <div class="controls btn-group col-md-2  col-condensed">
         <label>检票状态</label>
         <select v-model="isExpired" class="form-control">
           <option value="all">已过期及未过期</option>
@@ -31,21 +31,21 @@
           <option value="no">未过期</option>
         </select>
       </div>
-    </div>
+    <!-- </div>
     <hr class="break-space">
-    <div class="row">
+    <div class="row"> -->
       <!--成交时间范围-->
-      <div class="col-sm-4 col-condensed">
+      <div class="col-md-2  col-condensed">
         <label>成交时间范围</label>
         <input id="orderCreateDateRange" type="text" name="daterange" class="form-control overflow-ellipsis" />
       </div>
       <!--游玩时间范围-->
-      <div class="col-sm-4 col-condensed">
+      <div class="col-md-2  col-condensed">
         <label>游玩时间范围</label>
         <input id="visitDateRange" type="text" name="daterange" class="form-control overflow-ellipsis" />
       </div>
       <!--检票时间范围-->
-      <div class="col-sm-4 col-condensed">
+      <div class="col-md-2  col-condensed">
         <label>检票时间范围</label>
         <input id="checkDateRange" type="text" name="daterange" class="form-control overflow-ellipsis" />
       </div>
@@ -67,7 +67,7 @@
       <!--商品名-->
       <input class="flex-item form-control" v-model="goodsName" placeholder="商品名">
       <!--证件类型-->
-      <select class="flex-item form-control" v-model="bookerIDType" style="border-right:none">
+      <select class="flex-item form-control" v-model="bookerIDType" style="border-right:none; max-width:120px;">
         <option value="ID_CARD">身份证</option>
         <option value="ERTONG">儿童无证件</option>
         <option value="GANGAO">港澳通行证</option>
