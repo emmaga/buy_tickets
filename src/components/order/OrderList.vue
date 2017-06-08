@@ -10,9 +10,9 @@
     </a>
     <hr>
 
-    <div class="row">
+    <div class="row flex-box">
       <!--检票状态-->
-      <div class="controls btn-group col-md-2  col-condensed">
+      <div class="controls btn-group col-md-2  col-condensed flex-item">
         <label>检票状态</label>
         <select v-model="checkStatus" class="form-control">
           <option value="all">全部检票状态</option>
@@ -23,7 +23,7 @@
         </select>
       </div>
       <!--是否过期-->
-      <div class="controls btn-group col-md-2  col-condensed">
+      <div class="controls btn-group col-md-2  col-condensed flex-item">
         <label>检票状态</label>
         <select v-model="isExpired" class="form-control">
           <option value="all">已过期及未过期</option>
@@ -35,17 +35,17 @@
     <hr class="break-space">
     <div class="row"> -->
       <!--成交时间范围-->
-      <div class="col-md-2  col-condensed">
+      <div class="col-md-2  col-condensed flex-item">
         <label>成交时间范围</label>
         <input id="orderCreateDateRange" type="text" name="daterange" class="form-control overflow-ellipsis" />
       </div>
       <!--游玩时间范围-->
-      <div class="col-md-2  col-condensed">
+      <div class="col-md-2  col-condensed flex-item">
         <label>游玩时间范围</label>
         <input id="visitDateRange" type="text" name="daterange" class="form-control overflow-ellipsis" />
       </div>
       <!--检票时间范围-->
-      <div class="col-md-2  col-condensed">
+      <div class="col-md-2  col-condensed flex-item">
         <label>检票时间范围</label>
         <input id="checkDateRange" type="text" name="daterange" class="form-control overflow-ellipsis" />
       </div>
