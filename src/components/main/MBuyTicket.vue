@@ -14,102 +14,60 @@
         </div>
         <!--header end-->
         <!--body-->
-          <form @submit.prevent="buy">
-        <div class="modal-body">
-          <div class="row">
-            <div class="col-xs-12">
-              <!--价格码，产品名称，可游玩时间，售价-->
-              <h3>{{ tInfo.GoodsName }}：{{ tInfo.SalePrice }}元／张</h3>
-              <h5>可游玩日期 {{ visitDateStart }} - {{ visitDateEnd }}</h5>
-              <h5>价格码 {{ tInfo.SaleID }} </h5>
-            </div>
-          </div>
-          <hr>
-
-            <div class="form-group">
-              <!--订单基本信息-->
-              <label class="control-label" >游玩日期</label>
-              <input type="text" name="visitTime" class="form-control" />
-            </div>
-
-            <div class="form-group">
-              <!--购票数量-->
-              <label class="control-label" for="ticketCount">购票数量</label> 
-              <p :class="{ 'control': true }">
-                <input min="1" max="50" required v-validate="'required'" :class="{'form-control': true, 'has-error': errors.has('ticketCount') }" v-model="ticketCount" name="ticketCount" type="number" placeholder="请输入购票数量">
-                <i class="help" style="color:rgb(0,150,200)">
-                  <small>上限：50张</small>
-                </i>
-              </p>
-            </div>
-
-            <div class="form-group">
-              <!--联系人信息-->
-              <!--姓名-->
-              <label class="control-label" for="contactsName">预订人姓名</label> 
-              <p :class="{ 'control': true }">
-                <input required v-validate="'required'" :class="{'form-control': true, 'has-error': errors.has('contactsName') }" v-model="contactsName" name="contactsName" type="text" placeholder="请输入预订人姓名">
-              </p>
-            </div>
-
-
-            <div class="form-group">
-              <!--手机-->
-              <label class="control-label" for="contactsMobile">预订人手机号</label> 
-              <p :class="{ 'control': true }">
-                <input required v-validate="'required'" :class="{'form-control': true, 'has-error': errors.has('contactsMobile') }" v-model="contactsMobile" name="contactsMobile" type="text" placeholder="请输入预订人手机号">
-              </p>
-            </div>
-
-            <!--证件号-->
-            <div class="form-group">
-              <label class="control-label" for="contactsIdNum">预订人证件号</label>
-              <div class="row">
-                <!--证件类型-->
-                <div class="col-xs-3 col-condensed">
-                  <select v-model="contactsIdType" class="form-control">
-                    <option value="ID_CARD">身份证</option>
-                    <option value="ERTONG">儿童无证件</option>
-                    <option value="GANGAO">港澳通行证</option>
-                    <option value="HUZHAO">护照</option>
-                    <option value="SHIBING">士兵证</option>
-                    <option value="JUNGUAN">军官证</option>
-                    <option value="HUKOUBO">户口薄</option>
-                    <option value="CHUSHENGZHENGMING">出生证明</option>
-                    <option value="TAIBAO">台湾通行证</option>
-                    <option value="TAIBAOZHENG">台胞证</option>
-                    <option value="OTHER">其他</option>
-                  </select>
-                </div>
-                <div class="col-xs-9 col-condensed">
-                  <p :class="{ 'control': true }">
-                    <input required v-validate="'required'" :class="{'form-control': true, 'has-error': errors.has('contactsIdNum') }" v-model="contactsIdNum" name="contactsIdNum" type="text" placeholder="请输入预订人证件号">
-                  </p>
-                </div>
+        <form @submit.prevent="buy">
+          <div class="modal-body">
+            <div class="row">
+              <div class="col-xs-12">
+                <!--价格码，产品名称，可游玩时间，售价-->
+                <h3>{{ tInfo.GoodsName }}：{{ tInfo.SalePrice }}元／张</h3>
+                <h5>可游玩日期 {{ visitDateStart }} - {{ visitDateEnd }}</h5>
+                <h5>价格码 {{ tInfo.SaleID }} </h5>
               </div>
             </div>
+            <hr>
 
+              <div class="form-group">
+                <!--订单基本信息-->
+                <label class="control-label" >游玩日期</label>
+                <input type="text" name="visitTime" class="form-control" />
+              </div>
 
-            <div v-for="(item, index) in travelerList">
-              <hr>
-              <!--同游人信息-->
-              <div class="form-group" >
+              <div class="form-group">
+                <!--购票数量-->
+                <label class="control-label" for="ticketCount">购票数量</label> 
+                <p :class="{ 'control': true }">
+                  <input min="1" max="50" required v-validate="'required'" :class="{'form-control': true, 'has-error': errors.has('ticketCount') }" v-model="ticketCount" name="ticketCount" type="number" placeholder="请输入购票数量">
+                  <i class="help" style="color:rgb(0,150,200)">
+                    <small>上限：50张</small>
+                  </i>
+                </p>
+              </div>
+
+              <div class="form-group">
+                <!--联系人信息-->
                 <!--姓名-->
-                <label class="control-label">同游人{{ index + 1 }}姓名</label>
-                <input v-model="item.name" type="text" placeholder="请输入姓名" class="form-control">
+                <label class="control-label" for="contactsName">预订人姓名</label> 
+                <p :class="{ 'control': true }">
+                  <input required v-validate="'required'" :class="{'form-control': true, 'has-error': errors.has('contactsName') }" v-model="contactsName" name="contactsName" type="text" placeholder="请输入预订人姓名">
+                </p>
               </div>
-              <div class="form-group" >
+
+
+              <div class="form-group">
                 <!--手机-->
-                <label class="control-label">同游人{{ index + 1 }}手机号</label>
-                <input v-model="item.mobile" type="text" placeholder="请输入手机号" class="form-control">
+                <label class="control-label" for="contactsMobile">预订人手机号</label> 
+                <p :class="{ 'control': true }">
+                  <input required v-validate="'required'" :class="{'form-control': true, 'has-error': errors.has('contactsMobile') }" v-model="contactsMobile" name="contactsMobile" type="text" placeholder="请输入预订人手机号">
+                </p>
               </div>
-              <div class="form-group" >
-                <!--证件号-->
-                <label class="control-label">同游人{{ index + 1 }}证件号</label>
+
+              <!--证件号-->
+              <div class="form-group">
+                <label class="control-label" for="contactsIdNum">预订人证件号</label>
                 <div class="row">
+                  <!--证件类型-->
                   <div class="col-xs-3 col-condensed">
-                    <!--证件类型-->
-                    <select v-model="item.idType" class="form-control">
+                    <select v-model="contactsIdType" class="form-control">
                       <option value="ID_CARD">身份证</option>
                       <option value="ERTONG">儿童无证件</option>
                       <option value="GANGAO">港澳通行证</option>
@@ -124,23 +82,65 @@
                     </select>
                   </div>
                   <div class="col-xs-9 col-condensed">
-                    <input v-model="item.idNum" type="text" class="form-control" placeholder="请输入证件号">
+                    <p :class="{ 'control': true }">
+                      <input required v-validate="'required'" :class="{'form-control': true, 'has-error': errors.has('contactsIdNum') }" v-model="contactsIdNum" name="contactsIdNum" type="text" placeholder="请输入预订人证件号">
+                    </p>
                   </div>
                 </div>
               </div>
-            </div>
 
 
-              
-        </div>
-        <!--body end-->
+              <div v-for="(item, index) in travelerList">
+                <hr>
+                <!--同游人信息-->
+                <div class="form-group" >
+                  <!--姓名-->
+                  <label class="control-label">同游人{{ index + 1 }}姓名</label>
+                  <input v-model="item.name" type="text" placeholder="请输入姓名" class="form-control">
+                </div>
+                <div class="form-group" >
+                  <!--手机-->
+                  <label class="control-label">同游人{{ index + 1 }}手机号</label>
+                  <input v-model="item.mobile" type="text" placeholder="请输入手机号" class="form-control">
+                </div>
+                <div class="form-group" >
+                  <!--证件号-->
+                  <label class="control-label">同游人{{ index + 1 }}证件号</label>
+                  <div class="row">
+                    <div class="col-xs-3 col-condensed">
+                      <!--证件类型-->
+                      <select v-model="item.idType" class="form-control">
+                        <option value="ID_CARD">身份证</option>
+                        <option value="ERTONG">儿童无证件</option>
+                        <option value="GANGAO">港澳通行证</option>
+                        <option value="HUZHAO">护照</option>
+                        <option value="SHIBING">士兵证</option>
+                        <option value="JUNGUAN">军官证</option>
+                        <option value="HUKOUBO">户口薄</option>
+                        <option value="CHUSHENGZHENGMING">出生证明</option>
+                        <option value="TAIBAO">台湾通行证</option>
+                        <option value="TAIBAOZHENG">台胞证</option>
+                        <option value="OTHER">其他</option>
+                      </select>
+                    </div>
+                    <div class="col-xs-9 col-condensed">
+                      <input v-model="item.idNum" type="text" class="form-control" placeholder="请输入证件号">
+                    </div>
+                  </div>
+                </div>
+              </div>
 
-        <!--footer-->
-        <div class="modal-footer">
-          <a class="btn btn-default btn-sm" @click="close">取消</a>
-          <button type="submit" :disabled="saving" class="btn btn-primary btn-sm">下单</button>
-        </div>
-          </form>
+
+                
+          </div>
+          <!--body end-->
+
+          <!--footer-->
+          <div class="modal-footer">
+            <a class="btn btn-default btn-sm" @click="close">取消</a>
+            <button type="submit" :disabled="saving" class="btn btn-primary btn-sm">下单</button>
+          </div>
+        </form>
       </div>
     </div>
   </div>
@@ -195,6 +195,10 @@ export default {
   },
   created () {
     that = this
+    this.$bus.$on('buyTicketInit', event => {
+      this.tInfo = event.tInfo
+      this.init()
+    })
   },
   methods: {
     init () {

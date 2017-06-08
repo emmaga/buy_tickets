@@ -15,9 +15,25 @@ const config = {
 
 Vue.use(VeeValidate, config)
 
+/*
+ * By extending the Vue prototype with a new '$bus' property
+ * we can easily access our global event bus from any child component.
+ */
+Object.defineProperty( Vue.prototype, '$bus', {
+  get() {
+    return this.$root.bus
+  }
+})
+
+// This empty Vue model will serve as our event bus.
+var bus = new Vue({})
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
+  data: {
+    bus: bus // Here we bind our event bus to our $root Vue model.
+  },
   router,
   http,
   store,

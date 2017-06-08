@@ -25,8 +25,6 @@
     </v-server-table>
 
   </div>
-
-
 </template>
 
 <script>
@@ -39,9 +37,9 @@ Vue.component('odl-buy-ticket', {
   template: '<a class="btn btn-sm btn-primary" href="javascript:void(0);" @click="showBuyTicket">下单</a>',
   methods: {
     showBuyTicket () {
-      var bm = this.$parent.$parent.$parent.$refs.buyTicket
-      bm.tInfo = this.data
-      bm.init()
+      this.$bus.$emit('buyTicketInit', {
+        tInfo: this.data
+      })
     }
   },
   props: ['data']

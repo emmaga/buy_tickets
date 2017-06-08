@@ -8,7 +8,7 @@
           <button type="button" class="close"  @click="close">
             <span aria-hidden="true">&times;</span>
           </button>
-          <h5 class="modal-title" >游客</h5>
+          <h5 class="modal-title" >退票</h5>
         </div>
         <!--body-->
           <form @submit.prevent="refund">
@@ -23,9 +23,6 @@
                 <input min="1" :max="waitingCheck" required v-validate="'required'" :class="{'form-control': true, 'has-error': errors.has('cancelCount') }" v-model="cancelCount" name="cancelCount" type="number" placeholder="请输入退票数量">
               </p>
             </div>
-
-
-
         </div>
         <!--footer-->
         <div class="modal-footer">
@@ -58,6 +55,11 @@ export default {
   },
   created () {
     that = this
+    this.$bus.$on('refundInit', event => {
+      this.orderId = event.orderId
+      this.waitingCheck = event.waitingCheck
+      this.init()
+    })
   },
   methods: {
     init () {

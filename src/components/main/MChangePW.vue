@@ -63,6 +63,9 @@ export default {
   },
   created () {
     that = this
+    this.$bus.$on('changePWInit', event => {
+      this.init()
+    })
   },
   methods: {
     init () {

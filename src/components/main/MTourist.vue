@@ -56,6 +56,10 @@ export default {
   },
   created () {
     that = this
+    this.$bus.$on('touristInit', event => {
+      this.orderId = event.orderId
+      this.init()
+    })
   },
   methods: {
     init () {

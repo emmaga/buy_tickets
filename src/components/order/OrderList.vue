@@ -114,9 +114,9 @@ Vue.component('odl-tourist', {
   template: '<a class="btn btn-sm btn-primary" href="javascript:void(0);" @click="showTourist">游客</a>',
   methods: {
     showTourist () {
-      var tm = this.$parent.$parent.$parent.$refs.tourist
-      tm.orderId = this.data.orderId
-      tm.init()
+      this.$bus.$emit('touristInit', {
+        orderId: this.data.orderId
+      })
     }
   },
   props: ['data']
@@ -125,10 +125,10 @@ Vue.component('odl-refund', {
   template: '<button :disabled="disabled" class="btn btn-sm btn-danger" href="javascript:void(0);" @click="showRefund">退票</button>',
   methods: {
     showRefund () {
-      var rm = this.$parent.$parent.$parent.$refs.refund
-      rm.orderId = this.data.orderId
-      rm.waitingCheck = this.checkStatus === 'refund' ? 0 : (this.data.totalTickets - this.data.checkedTickets)
-      rm.init()
+      this.$bus.$emit('refundInit', {
+        orderId: this.data.orderId,
+        waitingCheck: this.checkStatus === 'refund' ? 0 : (this.data.totalTickets - this.data.checkedTickets)
+      })
     }
   },
   computed: {

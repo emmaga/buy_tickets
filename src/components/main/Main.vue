@@ -3,10 +3,10 @@
     <m-header></m-header>
     <m-nav></m-nav>
     <router-view></router-view>
-    <m-tourist ref="tourist"></m-tourist>
-    <m-buy-ticket ref="buyTicket"></m-buy-ticket>
-    <m-refund ref="refund"></m-refund>
-    <m-changePW ref="changePW"></m-changePW>
+    <m-tourist></m-tourist>
+    <m-buy-ticket></m-buy-ticket>
+    <m-refund></m-refund>
+    <m-changePW></m-changePW>
   </div>
 </template>
 
