@@ -101,16 +101,5 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.temp {
-  position: fixed;
-  z-index: 9999999;
-  top: 0px;
-  left: 0px;
-  width: 100%;
-  height: 100%;
-  background-color: white;
-}
-.has-error {
-  border: 1px solid red;
-}
+
 </style>
