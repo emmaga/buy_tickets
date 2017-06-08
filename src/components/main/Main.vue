@@ -1,7 +1,6 @@
 <template>
   <div>
     <m-header></m-header>
-    <div class="test">hi</div>
     <m-nav></m-nav>
     <router-view></router-view>
     <m-tourist ref="tourist"></m-tourist>
