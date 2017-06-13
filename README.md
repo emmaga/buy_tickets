@@ -9,6 +9,7 @@
 npm install
 
 # vue-tables-2 修改
+todo: 将改过的插件放到自定义中不要用node_modules目录
 将 src/assets/vue-tables-2/compiled 替换 node_modules／vue-tables-2/compiled
 
 # serve with hot reload at localhost:8080

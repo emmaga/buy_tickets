@@ -10,8 +10,6 @@ export function getCardType (value) {
       return '回乡证'
     case 'HUZHAO':
       return '护照'
-    case 'ID_CARD':
-      return '身份证'
     case 'SHIBING':
       return '士兵证'
     case 'JUNGUAN':
@@ -54,5 +52,5 @@ export function getIsExpired (value) {
 }
 
 export function getFenToYuan (value) {
-  return new Number(value / 100).toFixed(2)
+  return Number(value / 100).toFixed(2)
 }

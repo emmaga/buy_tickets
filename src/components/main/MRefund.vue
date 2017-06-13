@@ -74,7 +74,7 @@ export default {
       this.axios.post('/otauser', {
         action: 'OTACancelOrder',
         orderId: this.orderId - 0,
-        cancelSerial: new Date().getTime() + '' + Math.floor(Math.random(100)*100),
+        cancelSerial: new Date().getTime() + '' + Math.floor(Math.random(100) * 100),
         cancelCount: this.cancelCount
       })
       .then(function (response) {

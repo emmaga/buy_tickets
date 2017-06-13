@@ -61,15 +61,15 @@ export default {
       options: {
         perPageValues: [],
         texts: {
-          count:'第{from}至{to}条数据／共{count}条数据|共{count}条数据|共1条数据',
-            filter:'Filter Results:',
-            filterPlaceholder:'Search query',
-            limit:'Records:',
-            noResults:'查无结果',
-            page:'Page:', // for dropdown pagination 
-            filterBy: 'Filter by {column}', // Placeholder for search fields when filtering by column
-            loading:'Loading...', // First request to server
-            defaultOption:'Select {column}' // default option for list filters
+          count: '第{from}至{to}条数据／共{count}条数据|共{count}条数据|共1条数据',
+          filter: 'Filter Results:',
+          filterPlaceholder: 'Search query',
+          limit: 'Records:',
+          noResults: '查无结果',
+          page: 'Page:', // for dropdown pagination
+          filterBy: 'Filter by {column}', // Placeholder for search fields when filtering by column
+          loading: 'Loading...', // First request to server
+          defaultOption: 'Select {column}' // default option for list filters
         },
         filterable: false,
         perPage: 99999999999999,
@@ -77,8 +77,8 @@ export default {
           operate: 'odl-buy-ticket'
         },
         sortIcon: {
-          up:'',
-          down:''
+          up: '',
+          down: ''
         },
         params: {
           action: 'GetOTAProducts',
