@@ -33,4 +33,6 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="stylus">
 @import '../../stylus/app'
+// https://github.com/jaywcjlove/AutoPrefixCSS
+@import '../../stylus/vendor'
 </style>

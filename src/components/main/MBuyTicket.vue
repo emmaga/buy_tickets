@@ -150,7 +150,6 @@
 import moment from 'moment'
 import $ from '@/utils/jquery-v'
 
-let that
 export default {
   name: 'm-buy-ticket',
   data () {
@@ -194,7 +193,6 @@ export default {
     }
   },
   created () {
-    that = this
     this.$bus.$on('buyTicketInit', event => {
       this.tInfo = event.tInfo
       this.init()
@@ -210,12 +208,12 @@ export default {
       this.contactsIdType = 'ID_CARD'
       this.contactsIdNum = ''
       this.travelerList = []
-      $(function () {
+      $(() => {
         $('input[name="visitTime"]').daterangepicker({
           singleDatePicker: true,
           showDropdowns: true,
-          minDate: moment(that.$data.tInfo.VisitDateStart).format('MM/DD/YYYY'),
-          maxDate: moment(that.$data.tInfo.VisitDateEnd).format('MM/DD/YYYY'),
+          minDate: moment(this.$data.tInfo.VisitDateStart).format('MM/DD/YYYY'),
+          maxDate: moment(this.$data.tInfo.VisitDateEnd).format('MM/DD/YYYY'),
           locale: {
             customRangeLabel: 'Custom',
             daysOfWeek: [
@@ -271,20 +269,20 @@ export default {
           TravelerList: this.travelerList
         }
       })
-      .then(function (response) {
+      .then((response) => {
         let data = response.data
-        that.saving = false
+        this.saving = false
         if (data.rescode === 200) {
           alert('下单成功')
-          that.$router.go({
+          this.$router.go({
             path: '/main/ticketList',
             force: true
           })
         }
       })
-      .catch(function (error) {
+      .catch((error) => {
         console.log(error)
-        that.saving = false
+        this.saving = false
       })
       // .finally todo
       // https://github.com/mzabriskie/axios/issues/34

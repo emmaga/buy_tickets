@@ -41,7 +41,6 @@
 </template>
 
 <script>
-let that
 export default {
   name: 'm-refund',
   data () {
@@ -54,7 +53,6 @@ export default {
     }
   },
   created () {
-    that = this
     this.$bus.$on('refundInit', event => {
       this.orderId = event.orderId
       this.waitingCheck = event.waitingCheck
@@ -77,20 +75,20 @@ export default {
         cancelSerial: new Date().getTime() + '' + Math.floor(Math.random(100) * 100),
         cancelCount: this.cancelCount
       })
-      .then(function (response) {
+      .then((response) => {
         let data = response.data
         if (data.rescode === 200) {
           alert('退票已成功')
-          that.$router.go({
+          this.$router.go({
             path: '/main/orderList',
             force: true
           })
         }
-        that.refunding = false
+        this.refunding = false
       })
-      .catch(function (error) {
+      .catch((error) => {
         console.log(error)
-        that.refunding = false
+        this.refunding = false
       })
     }
   }

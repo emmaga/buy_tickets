@@ -44,11 +44,9 @@ Vue.component('odl-buy-ticket', {
   },
   props: ['data']
 })
-let that
 export default {
   name: 'ticket-list',
   created () {
-    that = this
     this.getAccountInfo()
   },
   data () {
@@ -84,9 +82,9 @@ export default {
           action: 'GetOTAProducts',
           count: 99999999999999 // 一页显示数量，不分页
         },
-        responseAdapter: function (resp) {
+        responseAdapter: (resp) => {
           let data = resp.data.ProductList
-          data.map(function (item, index, input) {
+          data.map((item, index, input) => {
             item.TwoDBarCodeOn = item.TwoDBarCodeOn ? '否' : '是'
             return item
           })
@@ -117,21 +115,18 @@ export default {
           OTACode: getParam('OTACode')
         }
       })
-      .then(function (response) {
+      .then((response) => {
         let data = response.data.data
-        console.log(data.PrePayment)
-        that.account.prePayment = data.PrePayment
-        that.account.paymentAmount = data.PaymentAmount
+        this.account.prePayment = data.PrePayment
+        this.account.paymentAmount = data.PaymentAmount
       })
-      .catch(function (error) {
+      .catch((error) => {
         console.log(error)
       })
     }
   },
   filters: {
-    fenToYuan: function (fen) {
-      return getFenToYuan(fen)
-    }
+    fenToYuan: (fen) => getFenToYuan(fen)
   }
 }
 </script>

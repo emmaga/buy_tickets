@@ -34,7 +34,6 @@
 
 <script>
 import {getCardType} from '@/utils/filters'
-let that
 export default {
   name: 'm-tourist',
   data () {
@@ -55,7 +54,6 @@ export default {
     }
   },
   created () {
-    that = this
     this.$bus.$on('touristInit', event => {
       this.orderId = event.orderId
       this.init()
@@ -75,16 +73,14 @@ export default {
         action: 'GetOrderUserList',
         orderId: this.orderId + ''
       })
-      .then(function (response) {
+      .then((response) => {
         let data = response.data
-        that.tourists = data.users.lists
+        this.tourists = data.users.lists
       })
       .catch(function (error) {
         console.log(error)
       })
     }
-  },
-  components: {
   }
 }
 </script>

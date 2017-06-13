@@ -2,6 +2,7 @@
   <!-- container -->
   <div class="bg-gray full-screen">
 
+    <div class="test">a</div>
     <!-- header -->
     <div id="top-nav" class="navbar navbar-inverse navbar-static-top">
       <div class="container-fluid">
@@ -65,7 +66,6 @@
 
 <script>
 import {setParam, md5} from '@/utils'
-let that
 export default {
   name: 'login',
   data () {
@@ -75,9 +75,6 @@ export default {
       OTACode: '',
       logining: false
     }
-  },
-  created () {
-    that = this
   },
   methods: {
     login () {
@@ -93,19 +90,19 @@ export default {
         // password: 'd0970714757783e6cf17b26fb8e2298f'
         password: md5()(this.password)
       })
-      .then(function (response) {
+      .then((response) => {
         let data = response.data
         setParam('clearToken', data.token)
         setParam('OTACode', data.OTACode)
         setParam('account', data.account)
         setParam('projectName', data.projectName)
-        that.$store.commit('setUserName', data.userName)
-        that.$router.push('main/ticketList')
-        that.logining = false
+        this.$store.commit('setUserName', data.userName)
+        this.$router.push('main/ticketList')
+        this.logining = false
       })
-      .catch(function (error) {
+      .catch((error) => {
         console.log(error)
-        that.logining = false
+        this.logining = false
       })
     }
   }
@@ -113,6 +110,5 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-
+<style scoped lang="stylus">
 </style>

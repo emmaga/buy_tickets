@@ -138,13 +138,11 @@ Vue.component('odl-refund', {
   },
   props: ['data']
 })
-let that
 let initStartCreateTime = new Date(moment(new Date()).format('YYYY-MM-DD')).getTime()
 let initEndCreateTime = new Date(new Date().getTime() + 30 * 24 * 60 * 60 * 1000).getTime()
 export default {
   name: 'order-list',
   created () {
-    that = this
     // this.init()
     $(function () {
       // orderCreateDateRange
@@ -181,15 +179,15 @@ export default {
         startDate: moment(initStartCreateTime).format('YYYY-MM-DD'),
         endDate: moment(initEndCreateTime).format('YYYY-MM-DD')
       },
-      function (start, end, label) {
-        that.$data.orderCreateDateStart = new Date(start._d).getTime()
-        that.$data.orderCreateDateEnd = new Date(end._d).getTime()
+      (start, end, label) => {
+        this.$data.orderCreateDateStart = new Date(start._d).getTime()
+        this.$data.orderCreateDateEnd = new Date(end._d).getTime()
         // alert('A new date range was chosen: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'))
       })
-      $('input[id="orderCreateDateRange"]').on('cancel.daterangepicker', function (ev, picker) {
+      $('input[id="orderCreateDateRange"]').on('cancel.daterangepicker', (ev, picker) => {
         $(this).val('')
-        that.$data.orderCreateDateStart = ''
-        that.$data.orderCreateDateEnd = ''
+        this.$data.orderCreateDateStart = ''
+        this.$data.orderCreateDateEnd = ''
       })
 
       // visitDateRange
@@ -225,15 +223,15 @@ export default {
           ]
         }
       },
-      function (start, end, label) {
-        that.$data.visitDateStart = new Date(start._d).getTime()
-        that.$data.visitDateEnd = new Date(end._d).getTime()
+      (start, end, label) => {
+        this.$data.visitDateStart = new Date(start._d).getTime()
+        this.$data.visitDateEnd = new Date(end._d).getTime()
         // alert('A new date range was chosen: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'))
       })
-      $('input[id="visitDateRange"]').on('cancel.daterangepicker', function (ev, picker) {
+      $('input[id="visitDateRange"]').on('cancel.daterangepicker', (ev, picker) => {
         $(this).val('')
-        that.$data.visitDateStart = ''
-        that.$data.visitDateEnd = ''
+        this.$data.visitDateStart = ''
+        this.$data.visitDateEnd = ''
       })
       $('input[id="visitDateRange"]').on('apply.daterangepicker', function (ev, picker) {
         $(this).val(picker.startDate.format('YYYY-MM-DD') + ' - ' + picker.endDate.format('YYYY-MM-DD'))
@@ -272,17 +270,17 @@ export default {
           ]
         }
       },
-      function (start, end, label) {
-        that.$data.checkDateStart = new Date(start._d).getTime()
-        that.$data.checkDateEnd = new Date(end._d).getTime()
+      (start, end, label) => {
+        this.$data.checkDateStart = new Date(start._d).getTime()
+        this.$data.checkDateEnd = new Date(end._d).getTime()
         // alert('A new date range was chosen: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'))
       })
-      $('input[id="checkDateRange"]').on('cancel.daterangepicker', function (ev, picker) {
+      $('input[id="checkDateRange"]').on('cancel.daterangepicker', (ev, picker) => {
         $(this).val('')
-        that.$data.checkDateStart = ''
-        that.$data.checkDateEnd = ''
+        this.$data.checkDateStart = ''
+        this.$data.checkDateEnd = ''
       })
-      $('input[id="checkDateRange"]').on('apply.daterangepicker', function (ev, picker) {
+      $('input[id="checkDateRange"]').on('apply.daterangepicker', (ev, picker) => {
         $(this).val(picker.startDate.format('YYYY-MM-DD') + ' - ' + picker.endDate.format('YYYY-MM-DD'))
       })
     })
@@ -422,21 +420,6 @@ export default {
       }
       this.$refs.table.refresh()
     }
-    // getTicketsList () {
-    //   this.axios.post('/otauser', {
-    //     action: 'GetOTAProducts',
-    //     projectName: 'xitangdev',
-    //     OTACode: 'Lvmama'
-    //   })
-    //   .then(function (response) {
-    //     let data = response.data
-    //     console.log(data)
-    //     that.tableData = data.ProductList
-    //   })
-    //   .catch(function (error) {
-    //     console.log(error)
-    //   })
-    // }
   },
   components: {
   }

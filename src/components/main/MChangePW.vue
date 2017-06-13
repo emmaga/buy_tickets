@@ -49,7 +49,6 @@
 
 <script>
 import {md5} from '@/utils'
-let that
 export default {
   name: 'm-changePW',
   data () {
@@ -62,7 +61,6 @@ export default {
     }
   },
   created () {
-    that = this
     this.$bus.$on('changePWInit', event => {
       this.init()
     })
@@ -85,17 +83,17 @@ export default {
         confirmPassword: md5()(this.confirmPassword),
         newPassword: md5()(this.newPassword)
       })
-      .then(function (response) {
+      .then((response) => {
         let data = response.data
         if (data.rescode === 200) {
           alert('修改成功')
-          that.close()
+          this.close()
         }
-        that.changing = false
+        this.changing = false
       })
-      .catch(function (error) {
+      .catch((error) => {
         console.log(error)
-        that.changing = false
+        this.changing = false
       })
     }
   }
