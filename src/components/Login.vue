@@ -2,7 +2,6 @@
   <!-- container -->
   <div class="bg-gray full-screen">
 
-    <div class="test">a</div>
     <!-- header -->
     <div id="top-nav" class="navbar navbar-inverse navbar-static-top">
       <div class="container-fluid">
