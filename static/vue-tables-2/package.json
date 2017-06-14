@@ -2,18 +2,18 @@
   "_args": [
     [
       {
-        "raw": "vue-tables-2",
+        "raw": "vue-tables-2@^0.6.23",
         "scope": null,
         "escapedName": "vue-tables-2",
         "name": "vue-tables-2",
-        "rawSpec": "",
-        "spec": "latest",
-        "type": "tag"
+        "rawSpec": "^0.6.23",
+        "spec": ">=0.6.23 <0.7.0",
+        "type": "range"
       },
-      "/Applications/XAMPP/xamppfiles/htdocs/tickets_distributor"
+      "/Applications/XAMPP/xamppfiles/htdocs/buy_tickets"
     ]
   ],
-  "_from": "vue-tables-2@latest",
+  "_from": "vue-tables-2@>=0.6.23 <0.7.0",
   "_id": "vue-tables-2@0.6.23",
   "_inCache": true,
   "_location": "/vue-tables-2",
@@ -29,23 +29,22 @@
   "_npmVersion": "3.10.6",
   "_phantomChildren": {},
   "_requested": {
-    "raw": "vue-tables-2",
+    "raw": "vue-tables-2@^0.6.23",
     "scope": null,
     "escapedName": "vue-tables-2",
     "name": "vue-tables-2",
-    "rawSpec": "",
-    "spec": "latest",
-    "type": "tag"
+    "rawSpec": "^0.6.23",
+    "spec": ">=0.6.23 <0.7.0",
+    "type": "range"
   },
   "_requiredBy": [
-    "#USER",
     "/"
   ],
   "_resolved": "https://registry.npmjs.org/vue-tables-2/-/vue-tables-2-0.6.23.tgz",
   "_shasum": "ed72b1640dc58bfda9c7d17b29f3ffd5c07344e8",
   "_shrinkwrap": null,
-  "_spec": "vue-tables-2",
-  "_where": "/Applications/XAMPP/xamppfiles/htdocs/tickets_distributor",
+  "_spec": "vue-tables-2@^0.6.23",
+  "_where": "/Applications/XAMPP/xamppfiles/htdocs/buy_tickets",
   "bugs": {
     "url": "https://github.com/matfish2/vue-tables-2/issues"
   },

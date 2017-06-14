@@ -11,7 +11,6 @@
 </template>
 
 <script>
-
 import MHeader from './MHeader'
 import MNav from './MNav'
 import MTourist from './MTourist'

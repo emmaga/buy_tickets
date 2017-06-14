@@ -8,9 +8,14 @@
 # install dependencies
 npm install
 
-# vue-tables-2 修改
-todo: 将改过的插件放到自定义中不要用node_modules目录
-将 src/assets/vue-tables-2/compiled 替换 node_modules／vue-tables-2/compiled
+# 如果安装时出现
+PhantomJS not found on PATH
+Downloading https://github.com/Medium/phantomjs/releases/download/v2.1.1/phantomjs-2.1.1-macosx.zip
+Saving to /tmp/phantomjs/phantomjs-2.1.1-macosx.zip
+Receiving...
+失败则手动安装
+cd node_modules/phantomjs-prebuilt/
+node install.js
 
 # serve with hot reload at localhost:8080
 npm run dev
@@ -23,7 +28,6 @@ npm run build --report
 
 # run unit tests
 npm run unit
-
 # run all tests
 npm test
 ```

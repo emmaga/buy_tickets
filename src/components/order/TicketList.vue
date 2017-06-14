@@ -29,7 +29,7 @@
 
 <script>
 import Vue from 'vue'
-import {ServerTable} from 'vue-tables-2'
+import {ServerTable} from '@/../static/vue-tables-2'
 import {getParam} from '@/utils'
 import {getFenToYuan} from '@/utils/filters'
 Vue.use(ServerTable)

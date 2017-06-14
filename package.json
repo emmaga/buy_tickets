@@ -8,7 +8,7 @@
     "dev": "node build/dev-server.js",
     "start": "node build/dev-server.js",
     "build": "node build/build.js",
-    "unit": "cross-env BABEL_ENV=test karma start test/unit/karma.conf.js --single-run",
+    "unit": "node_modules/.bin/karma start test/unit/karma.conf.js",
     "test": "npm run unit",
     "lint": "eslint --ext .js,.vue src test/unit/specs"
   },
@@ -19,7 +19,7 @@
     "vee-validate": "^2.0.0-rc.5",
     "vue": "^2.2.6",
     "vue-router": "^2.3.1",
-    "vue-tables-2": "^0.6.23",
+    "vue-tables-2": "^0.6.26",
     "vuex": "^2.3.1"
   },
   "devDependencies": {

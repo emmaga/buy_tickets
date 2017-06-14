@@ -106,7 +106,7 @@
 <script>
 import $ from '@/utils/jquery-v'
 import Vue from 'vue'
-import {ServerTable} from 'vue-tables-2'
+import {ServerTable} from '@/../static/vue-tables-2'
 import moment from 'moment'
 import {getCardType, getIsExpired, getCheckStatus} from '@/utils/filters'
 Vue.use(ServerTable)
