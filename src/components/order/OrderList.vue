@@ -138,12 +138,13 @@ Vue.component('odl-refund', {
   },
   props: ['data']
 })
-let initStartCreateTime = new Date(moment(new Date()).format('YYYY-MM-DD')).getTime()
-let initEndCreateTime = new Date(new Date().getTime() + 30 * 24 * 60 * 60 * 1000).getTime()
+let self
+let initStartCreateTime = new Date(moment(new Date()).format('YYYY-MM-DD') + ' 00:00:00').getTime()
+let initEndCreateTime = initStartCreateTime + 30 * 24 * 60 * 60 * 1000
 export default {
   name: 'order-list',
   created () {
-    // this.init()
+    self = this
     $(function () {
       // orderCreateDateRange
       $('input[id="orderCreateDateRange"]').daterangepicker({
@@ -179,15 +180,15 @@ export default {
         startDate: moment(initStartCreateTime).format('YYYY-MM-DD'),
         endDate: moment(initEndCreateTime).format('YYYY-MM-DD')
       },
-      (start, end, label) => {
-        this.$data.orderCreateDateStart = new Date(start._d).getTime()
-        this.$data.orderCreateDateEnd = new Date(end._d).getTime()
+      function (start, end, label) {
+        self.orderCreateDateStart = new Date(start._d).getTime()
+        self.orderCreateDateEnd = new Date(end._d).getTime()
         // alert('A new date range was chosen: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'))
       })
-      $('input[id="orderCreateDateRange"]').on('cancel.daterangepicker', (ev, picker) => {
+      $('input[id="orderCreateDateRange"]').on('cancel.daterangepicker', function (ev, picker) {
         $(this).val('')
-        this.$data.orderCreateDateStart = ''
-        this.$data.orderCreateDateEnd = ''
+        self.orderCreateDateStart = ''
+        self.orderCreateDateEnd = ''
       })
 
       // visitDateRange
@@ -222,19 +223,16 @@ export default {
             '十二月'
           ]
         }
-      },
-      (start, end, label) => {
-        this.$data.visitDateStart = new Date(start._d).getTime()
-        this.$data.visitDateEnd = new Date(end._d).getTime()
-        // alert('A new date range was chosen: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'))
       })
-      $('input[id="visitDateRange"]').on('cancel.daterangepicker', (ev, picker) => {
+      $('input[id="visitDateRange"]').on('cancel.daterangepicker', function (ev, picker) {
         $(this).val('')
-        this.$data.visitDateStart = ''
-        this.$data.visitDateEnd = ''
+        self.visitDateStart = ''
+        self.visitDateEnd = ''
       })
       $('input[id="visitDateRange"]').on('apply.daterangepicker', function (ev, picker) {
         $(this).val(picker.startDate.format('YYYY-MM-DD') + ' - ' + picker.endDate.format('YYYY-MM-DD'))
+        self.visitDateStart = new Date(picker.startDate._d).getTime()
+        self.visitDateEnd = new Date(picker.endDate._d).getTime()
       })
 
       // checkDateRange
@@ -269,19 +267,16 @@ export default {
             '十二月'
           ]
         }
-      },
-      (start, end, label) => {
-        this.$data.checkDateStart = new Date(start._d).getTime()
-        this.$data.checkDateEnd = new Date(end._d).getTime()
-        // alert('A new date range was chosen: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'))
       })
-      $('input[id="checkDateRange"]').on('cancel.daterangepicker', (ev, picker) => {
+      $('input[id="checkDateRange"]').on('cancel.daterangepicker', function (ev, picker) {
         $(this).val('')
-        this.$data.checkDateStart = ''
-        this.$data.checkDateEnd = ''
+        self.checkDateStart = ''
+        self.checkDateEnd = ''
       })
-      $('input[id="checkDateRange"]').on('apply.daterangepicker', (ev, picker) => {
+      $('input[id="checkDateRange"]').on('apply.daterangepicker', function (ev, picker) {
         $(this).val(picker.startDate.format('YYYY-MM-DD') + ' - ' + picker.endDate.format('YYYY-MM-DD'))
+        self.checkDateStart = new Date(picker.startDate._d).getTime()
+        self.checkDateEnd = new Date(picker.endDate._d).getTime()
       })
     })
   },
@@ -398,6 +393,7 @@ export default {
   },
   methods: {
     search () {
+      console.log(this.visitDateStart)
       this.$refs.table.customQueries = {
         search: {
           checkStatus: this.checkStatus,

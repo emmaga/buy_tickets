@@ -150,6 +150,8 @@
 import moment from 'moment'
 import $ from '@/utils/jquery-v'
 
+let self
+
 export default {
   name: 'm-buy-ticket',
   data () {
@@ -193,6 +195,7 @@ export default {
     }
   },
   created () {
+    self = this
     this.$bus.$on('buyTicketInit', event => {
       this.tInfo = event.tInfo
       this.init()
@@ -242,7 +245,7 @@ export default {
           }
         },
         function (start, end, label) {
-          this.visitTime = start.format('YYYYMMDDHHmmss')
+          self.visitTime = start.format('YYYYMMDDHHmmss')
         })
       })
     },
