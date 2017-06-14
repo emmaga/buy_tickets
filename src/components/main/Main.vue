@@ -32,6 +32,5 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="stylus">
-@import '../../stylus/app'
-@import '../../../bower_components/AutoPrefixCSS/lib/vendor'
+  @import '../../stylus/app'
 </style>

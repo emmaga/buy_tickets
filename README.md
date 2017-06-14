@@ -5,12 +5,6 @@
 ## Build Setup
 
 ``` bash
-# install bower
-sudo npm install -g bower
-
-# install AutoPrefixCss
-sudo bower install AutoPrefixCss --allow-root
-
 # install dependencies
 npm install
 
